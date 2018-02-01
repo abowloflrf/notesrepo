@@ -15856,10 +15856,28 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_element_ui___default.a);
 
 
 var app = new Vue({
-  el: '#notesrepo-app',
-  render: function render(h) {
-    return h(__WEBPACK_IMPORTED_MODULE_2__App_vue___default.a);
-  }
+    el: '#notesrepo-app',
+    beforeCreate: function beforeCreate() {
+        //let that = this;
+        if (localStorage.token) {
+            axios.defaults.headers.common['Authorization'] = 'Bearer' + localStorage.token;
+            //Vue.prototype.$axios.defaults.headers.common['Authorization'] = 'Bearer' + localStorage.token;
+            // axios.get('api/refreshtoken', {
+            //     headers: {'Authorization': 'Bearer' + localStorage.token}
+            // }).then(function (response) {
+            //     let data = response.data;
+            //     if (data.status == 1) {
+            //         store.commit(types.LOGIN_SUCCESS, data);
+            //         axios.defaults.headers.common['Authorization'] = 'Bearer' + data.token;
+            //         Vue.prototype.$axios.defaults.headers.common['Authorization'] = 'Bearer' + data.token;
+            //     }  else {
+            //         router.push({path: '/login'});}
+            // })
+        }
+    },
+    render: function render(h) {
+        return h(__WEBPACK_IMPORTED_MODULE_2__App_vue___default.a);
+    }
 });
 
 /***/ }),
@@ -71455,7 +71473,7 @@ exports = module.exports = __webpack_require__(73)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -71844,44 +71862,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            data: [{
-                label: "一级 1",
-                children: [{
-                    label: "二级 1-1",
-                    children: [{
-                        label: "三级 1-1-1"
-                    }]
-                }]
-            }, {
-                label: "一级 2",
-                children: [{
-                    label: "二级 2-1",
-                    children: [{
-                        label: "三级 2-1-1"
-                    }]
-                }, {
-                    label: "二级 2-2",
-                    children: [{
-                        label: "三级 2-2-1"
-                    }]
-                }]
-            }, {
-                label: "一级 3",
-                children: [{
-                    label: "二级 3-1",
-                    children: [{
-                        label: "三级 3-1-1"
-                    }]
-                }, {
-                    label: "二级 3-2",
-                    children: [{
-                        label: "三级 3-2-1"
-                    }]
-                }]
-            }],
+            data: [],
             defaultProps: {
-                children: "children",
-                label: "label"
+                children: "notes",
+                label: "title"
             }
         };
     },
@@ -71890,6 +71874,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         handleNodeClick: function handleNodeClick(data) {
             console.log(data);
         }
+    },
+    created: function created() {
+        var _this = this;
+
+        axios.get("/api/notes").then(function (response) {
+            console.log(response.data);
+            _this.data = response.data.notes_list;
+            //this.titleList = response.data
+        }).catch(function (error) {
+            console.log(error);
+        });
     }
 });
 
@@ -71902,7 +71897,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("el-tree", {
-    attrs: { data: _vm.data, props: _vm.defaultProps },
+    attrs: { data: _vm.data, props: _vm.defaultProps, accordion: "" },
     on: { "node-click": _vm.handleNodeClick }
   })
 }

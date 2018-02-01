@@ -25,5 +25,23 @@ import App from './App.vue'
 
 const app = new Vue({
     el: '#notesrepo-app',
+    beforeCreate:function () {
+        //let that = this;
+        if (localStorage.token) {
+            axios.defaults.headers.common['Authorization'] = 'Bearer' + localStorage.token;
+            //Vue.prototype.$axios.defaults.headers.common['Authorization'] = 'Bearer' + localStorage.token;
+            // axios.get('api/refreshtoken', {
+            //     headers: {'Authorization': 'Bearer' + localStorage.token}
+            // }).then(function (response) {
+            //     let data = response.data;
+            //     if (data.status == 1) {
+            //         store.commit(types.LOGIN_SUCCESS, data);
+            //         axios.defaults.headers.common['Authorization'] = 'Bearer' + data.token;
+            //         Vue.prototype.$axios.defaults.headers.common['Authorization'] = 'Bearer' + data.token;
+            //     }  else {
+            //         router.push({path: '/login'});}
+            // })
+        }
+    },
     render: h => h(App)
 });

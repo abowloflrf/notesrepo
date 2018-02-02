@@ -9,22 +9,48 @@ export default {
             data: [],
             defaultProps: {
                 children: "notes",
-                label: "title"
+                label: "title",
+                isLeaf: "isNote"
             }
         }
     },
     methods: {
         handleNodeClick(data) {
-            console.log(data)
+            if (data.hasOwnProperty("isNote")) {
+                console.log(data)
+                axios
+                    .get("/api/notes/" + data.uuid)
+                    .then(response => {
+                        this.$alert(response.data.content,"Title: "+response.data.title, {
+                            confirmButtonText: "确定"
+                        })
+                    })
+                    .catch(function(error) {
+                        console.log(error)
+                    })
+            }
         }
     },
     created() {
         axios
             .get("/api/notes")
             .then(response => {
-                console.log(response.data)
-                this.data = JSON.parse(response.data.notes_list)
-                //this.titleList = response.data
+                //console.log(response.data)
+                //var temp1 = response.data
+                //console.log(temp1);
+                //给每条节点加上'isLeaf'属性
+                // temp1 = temp1.notes_list.forEach(e=> {
+                //     e.notes.forEach(n=> {
+                //         n["isNote"] = true
+                //     })
+                // })
+                let tempList = response.data.notes_list
+                tempList.forEach(e => {
+                    e.notes.forEach(n => {
+                        n["isNote"] = true
+                    })
+                })
+                this.data = tempList
             })
             .catch(function(error) {
                 console.log(error)

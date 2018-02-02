@@ -71473,7 +71473,7 @@ exports = module.exports = __webpack_require__(73)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -71865,23 +71865,48 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             data: [],
             defaultProps: {
                 children: "notes",
-                label: "title"
+                label: "title",
+                isLeaf: "isNote"
             }
         };
     },
 
     methods: {
         handleNodeClick: function handleNodeClick(data) {
-            console.log(data);
+            var _this = this;
+
+            if (data.hasOwnProperty("isNote")) {
+                console.log(data);
+                axios.get("/api/notes/" + data.uuid).then(function (response) {
+                    _this.$alert(response.data.content, "Title: " + response.data.title, {
+                        confirmButtonText: "确定"
+                    });
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            }
         }
     },
     created: function created() {
-        var _this = this;
+        var _this2 = this;
 
         axios.get("/api/notes").then(function (response) {
-            console.log(response.data);
-            _this.data = response.data.notes_list;
-            //this.titleList = response.data
+            //console.log(response.data)
+            //var temp1 = response.data
+            //console.log(temp1);
+            //给每条节点加上'isLeaf'属性
+            // temp1 = temp1.notes_list.forEach(e=> {
+            //     e.notes.forEach(n=> {
+            //         n["isNote"] = true
+            //     })
+            // })
+            var tempList = response.data.notes_list;
+            tempList.forEach(function (e) {
+                e.notes.forEach(function (n) {
+                    n["isNote"] = true;
+                });
+            });
+            _this2.data = tempList;
         }).catch(function (error) {
             console.log(error);
         });

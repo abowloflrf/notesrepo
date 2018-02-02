@@ -24,4 +24,5 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function ($router) {
 });
 Route::group(['middleware' => 'api', 'prefix' => 'notes'], function ($router) {
     Route::get('', 'NotesController@getNotesList');
+    Route::get('{uuid}', 'NotesController@getSingleNote');
 });

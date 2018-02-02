@@ -52,4 +52,18 @@ class NotesController extends Controller
         }
         return response()->json($result);
     }
+
+    public function getSingleNote($uuid)
+    {
+        $note=Note::where('uuid',$uuid)->first();
+        //return json_encode($note);
+        return response()->json(array(
+            'title'=>$note['title'],
+            'uuid'=>$note['uuid'],
+            'author'=>$note['author'],
+            'created_at'=>$note['created_at'],
+            'category'=>$note['category'],
+            'content'=>$note['content']
+        ));
+    }
 }

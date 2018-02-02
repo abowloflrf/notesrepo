@@ -29,6 +29,7 @@ const app = new Vue({
         //let that = this;
         if (localStorage.token) {
             axios.defaults.headers.common['Authorization'] = 'Bearer' + localStorage.token;
+            //TODO:刷新Token
             //Vue.prototype.$axios.defaults.headers.common['Authorization'] = 'Bearer' + localStorage.token;
             // axios.get('api/refreshtoken', {
             //     headers: {'Authorization': 'Bearer' + localStorage.token}

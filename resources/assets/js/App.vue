@@ -1,54 +1,89 @@
 <template>
     <el-container>
-        <el-aside width="240px">
-            <el-tree :data="data" :props="defaultProps" accordion @node-click="handleNodeClick"></el-tree>
+        <el-aside class="noterepo-left" :width="asideWidth" v-bind:style="{ width: asideWidth }">
+            <UserInfo v-if="user" :user="user"></UserInfo>
+            <el-button type="primary" @click="newNote" plain>新笔记</el-button>
+            <el-button type="primary" plain>新目录</el-button>
+            <el-tree :data="notesList" :props="notesListProps" accordion @node-click="handleNodeClick"></el-tree>
+            <div class="notesrepo-new">New Note</div>
         </el-aside>
         <el-container class="notesrepo-right">
-            <el-header>Header</el-header>
-            <el-main>
-                <div class="notesrepo-note" v-loading="noteLoading" v-if="currentNote">
+            <el-header class="notesrepo-header" :height="headerHeight">
+                <div class="notesrepo-toggler" @click="hideSidebar">   
+                    <svg width="100%" height="100%" viewBox="0 0 14 14" style="fill: currentcolor; display: block; width: 18px; height: 18px;"><path d="M0,1.25 L14,1.25 L14,2.75 L0,2.75 L0,1.25 Z M0,6.25 L14,6.25 L14,7.75 L0,7.75 L0,6.25 Z M0,11.25 L14,11.25 L14,12.75 L0,12.75 L0,11.25 Z"></path></svg>
+                </div>
+            </el-header>
+            <el-main v-loading="noteLoading">
+                <div class="notesrepo-note" v-if="currentNote">
                     <Editor :note="currentNote"></Editor>
                 </div>
+                <Empty v-else></Empty >
             </el-main>
         </el-container>
     </el-container>
 </template>
 
 <script>
-import Editor from './components/Editor'
+import Editor from "./components/Editor"
+import Empty from "./components/Empty"
+import UserInfo from "./components/UserInfo"
+
 export default {
-    components:{
-        Editor
+    components: {
+        Editor,
+        Empty,
+        UserInfo
     },
     data() {
         return {
-            data: [],
-            currentNote:null,
-            defaultProps: {
+            user: null,
+            notesList: [],
+            currentNote: null,
+            notesListProps: {
                 children: "notes",
                 label: "title",
                 isLeaf: "isNote"
             },
-            noteLoading:false
+            noteLoading: false,
+            headerHeight: "40px",
+            asideWidth: "230px"
         }
     },
     methods: {
+        hideSidebar() {
+            if (this.asideWidth == "230px") {
+                this.asideWidth = "0px"
+            } else {
+                this.asideWidth = "230px"
+            }
+        },
         handleNodeClick(data) {
             if (data.hasOwnProperty("isNote")) {
-                this.noteLoading=true
+                this.noteLoading = true
                 axios
                     .get("/api/notes/" + data.uuid)
                     .then(response => {
-                        this.currentNote=response.data
-                        this.noteLoading=false
+                        this.currentNote = response.data
+                        this.noteLoading = false
                     })
                     .catch(function(error) {
                         console.log(error)
                     })
             }
-        }
+        },
+        newNote() {}
     },
-    created() {
+    beforeCreate() {
+        //获取用户信息
+        axios
+            .post("/api/auth/me")
+            .then(response => {
+                this.user = response.data
+            })
+            .catch(function(error) {
+                console.log(error)
+            })
+        //获取笔记列表
         axios
             .get("/api/notes")
             .then(response => {
@@ -58,7 +93,7 @@ export default {
                         n["isNote"] = true
                     })
                 })
-                this.data = tempList
+                this.notesList = tempList
             })
             .catch(function(error) {
                 console.log(error)
@@ -68,23 +103,49 @@ export default {
 </script>
 
 <style>
-.el-header,
-.el-footer {
-    background-color: #b3c0d1;
-    text-align: center;
-    line-height: 60px;
+.notesrepo-left {
+    width: 230px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    pointer-events: none;
+    position: relative;
+    z-index: 99;
 }
-
 .notesrepo-right {
-    width: calc(100vw-240px);
     height: 100vh;
+    box-shadow: rgba(84, 70, 35, 0.3) 0px 6px 20px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    width: calc(100vw - 230px);
+    max-height: 100%;
 }
-.notesrepo-note{
-    word-wrap:break-word;
+.notesrepo-header {
+    z-index: 100;
+    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);
+    padding: 0;
+}
+.notesrepo-toggler {
+    padding: 11px;
+    cursor: pointer;
+}
+.notesrepo-toggler svg {
+    height: 18px;
+    width: 18px;
+}
+.notesrepo-note {
+    word-wrap: break-word;
     max-width: 100%;
     overflow-y: auto;
 }
-
+.notesrepo-new {
+    display: block;
+    flex: 0 0 auto;
+    margin-top: auto;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px inset;
+}
 .el-main {
     background-color: #e9eef3;
 }

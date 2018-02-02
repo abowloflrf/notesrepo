@@ -1,0 +1,347 @@
+$font-family-main: Lato, 'Helvetica Neue', Helvetica, sans-serif;
+$font-family-monospace: 'Roboto Mono', 'Lucida Sans Typewriter', 'Lucida Console', monaco, Courrier, monospace;
+$body-color-light: rgba(0, 0, 0, 0.75);
+$body-color-dark: rgba(255, 255, 255, 0.75);
+$code-bg: rgba(0, 0, 0, 0.05);
+$line-height-base: 1.67;
+$line-height-title: 1.33;
+$font-size-monospace: 0.85em;
+$highlighting-color: #ff0;
+$selection-highlighting-color: #ff9632;
+$info-bg: transparentize($selection-highlighting-color, 0.85);
+$code-border-radius: 2px;
+$link-color: #0c93e4;
+$error-color: #f31;
+$border-radius-base: 2px;
+$hr-color: rgba(128, 128, 128, 0.2);
+$navbar-bg: #2c2c2c;
+$navbar-color: mix($navbar-bg, #fff, 33%);
+$navbar-hover-color: #fff;
+$navbar-hover-background: rgba(255, 255, 255, 0.1);
+
+$editor-background-light: #fff;
+$editor-background-dark: #1e1e1e;
+
+$editor-color-light: rgba(0, 0, 0, 0.8);
+$editor-color-light-low: #000;
+$editor-color-light-high: rgba(0, 0, 0, 0.28);
+$editor-color-light-blockquote: rgba(0, 0, 0, 0.48);
+
+$editor-color-dark: rgba(255, 255, 255, 0.8);
+$editor-color-dark-low: #fff;
+$editor-color-dark-high: rgba(255, 255, 255, 0.28);
+$editor-color-dark-blockquote: rgba(255, 255, 255, 0.48);
+
+$editor-font-weight-base: 400;
+$editor-font-weight-bold: 600;
+
+.markdown-highlighting {
+    color: $editor-color-light;
+    caret-color: $editor-color-light-low;
+  
+    .app--dark & {
+      color: $editor-color-dark;
+      caret-color: $editor-color-dark-low;
+    }
+  
+    font-family: inherit;
+    font-size: inherit;
+    -webkit-font-smoothing: auto;
+    -moz-osx-font-smoothing: auto;
+    font-weight: $editor-font-weight-base;
+  
+    .code {
+      font-family: $font-family-monospace;
+      font-size: $font-size-monospace;
+  
+      * {
+        font-size: inherit !important;
+      }
+    }
+  
+    .pre {
+      color: $editor-color-light;
+  
+      .app--dark & {
+        color: $editor-color-dark;
+      }
+  
+      font-family: $font-family-monospace;
+      font-size: $font-size-monospace;
+  
+      [class*='language-'] {
+        color: $editor-color-light-low;
+  
+        .app--dark & {
+          color: $editor-color-dark-low;
+        }
+      }
+  
+      * {
+        font-size: inherit !important;
+      }
+  
+      &,
+      * {
+        line-height: $line-height-title;
+      }
+    }
+  
+    .tag {
+      color: $editor-color-light;
+  
+      .app--dark & {
+        color: $editor-color-dark;
+      }
+  
+      font-family: $font-family-monospace;
+      font-size: $font-size-monospace;
+      font-weight: $editor-font-weight-bold;
+  
+      .punctuation,
+      .attr-value,
+      .attr-name {
+        font-weight: $editor-font-weight-base;
+      }
+  
+      * {
+        font-size: inherit !important;
+      }
+    }
+  
+    .latex,
+    .math {
+      color: $editor-color-light;
+  
+      .app--dark & {
+        color: $editor-color-dark;
+      }
+    }
+  
+    .entity {
+      color: $editor-color-light;
+  
+      .app--dark & {
+        color: $editor-color-dark;
+      }
+  
+      font-family: $font-family-monospace;
+      font-size: $font-size-monospace;
+      font-style: italic;
+  
+      * {
+        font-size: inherit !important;
+      }
+    }
+  
+    .table {
+      font-family: $font-family-monospace;
+      font-size: $font-size-monospace;
+  
+      * {
+        font-size: inherit !important;
+      }
+    }
+  
+    .comment {
+      color: $editor-color-light-high;
+  
+      .app--dark & {
+        color: $editor-color-dark-high;
+      }
+    }
+  
+    .keyword {
+      color: $editor-color-light-low;
+  
+      .app--dark & {
+        color: $editor-color-dark-low;
+      }
+  
+      font-weight: $editor-font-weight-bold;
+    }
+  
+    .code,
+    .img,
+    .img-wrapper,
+    .imgref,
+    .cl-toc {
+      background-color: $code-bg;
+      border-radius: $code-border-radius;
+      padding: 0.15em 0;
+    }
+  
+    .img-wrapper {
+      display: inline-block;
+  
+      .img {
+        display: inline-block;
+        padding: 0;
+        background-color: transparent;
+      }
+  
+      img {
+        max-width: 100%;
+        padding: 0 0.15em;
+      }
+    }
+  
+    .cl-toc {
+      font-size: 2.8em;
+      padding: 0.15em;
+    }
+  
+    .blockquote {
+      color: $editor-color-light-blockquote;
+  
+      .app--dark & {
+        color: $editor-color-dark-blockquote;
+      }
+    }
+  
+    .h1,
+    .h11,
+    .h2,
+    .h22,
+    .h3,
+    .h4,
+    .h5,
+    .h6 {
+      font-weight: $editor-font-weight-bold;
+  
+      &,
+      * {
+        line-height: $line-height-title;
+      }
+    }
+  
+    .h1,
+    .h11 {
+      font-size: 2em;
+    }
+  
+    .h2,
+    .h22 {
+      font-size: 1.5em;
+    }
+  
+    .h3 {
+      font-size: 1.17em;
+    }
+  
+    .h4 {
+      font-size: 1em;
+    }
+  
+    .h5 {
+      font-size: 0.83em;
+    }
+  
+    .h6 {
+      font-size: 0.75em;
+    }
+  
+    .cl-hash {
+      color: $editor-color-light-high;
+  
+      .app--dark & {
+        color: $editor-color-dark-high;
+      }
+    }
+  
+    .cl,
+    .hr {
+      color: $editor-color-light-high;
+  
+      .app--dark & {
+        color: $editor-color-dark-high;
+      }
+  
+      font-style: normal;
+      font-weight: $editor-font-weight-base;
+    }
+  
+    .em,
+    .em .cl {
+      font-style: italic;
+    }
+  
+    .strong,
+    .strong .cl,
+    .term {
+      font-weight: $editor-font-weight-bold;
+    }
+  
+    .cl-del-text {
+      text-decoration: line-through;
+    }
+  
+    .url,
+    .email,
+    .cl-underlined-text {
+      text-decoration: underline;
+    }
+  
+    .linkdef .url {
+      color: $editor-color-light-high;
+  
+      .app--dark & {
+        color: $editor-color-dark-high;
+      }
+    }
+  
+    .fn,
+    .inlinefn,
+    .sup {
+      font-size: smaller;
+      position: relative;
+      top: -0.5em;
+    }
+  
+    .sub {
+      bottom: -0.25em;
+      font-size: smaller;
+      position: relative;
+    }
+  
+    .img,
+    .imgref,
+    .link,
+    .linkref {
+      color: $editor-color-light-high;
+  
+      .app--dark & {
+        color: $editor-color-dark-high;
+      }
+  
+      .cl-underlined-text {
+        color: $editor-color-light-low;
+  
+        .app--dark & {
+          color: $editor-color-dark-low;
+        }
+      }
+    }
+  
+    .cl-title {
+      color: $editor-color-light;
+  
+      .app--dark & {
+        color: $editor-color-dark;
+      }
+    }
+  }
+  
+  .markdown-highlighting--inline {
+    .h1,
+    .h11,
+    .h2,
+    .h22,
+    .h3,
+    .h4,
+    .h5,
+    .h6,
+    .cl-toc {
+      font-size: inherit;
+    }
+  }

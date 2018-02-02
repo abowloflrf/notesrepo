@@ -7,6 +7,11 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>NotesRepo - Workspace</title>
 </head>
+<style>
+    body{
+        margin:0;
+    }
+</style>
 <body>
     <div id="notesrepo-app"></div>
     <script src="{{ asset('js/app.js') }}"></script>

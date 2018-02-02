@@ -66,4 +66,22 @@ class NotesController extends Controller
             'content'=>$note['content']
         ));
     }
+
+    public function updateSingleNote(Request $request,$uuid)
+    {
+        $note=Note::where('uuid',$uuid)->first();
+        $note->content=$request->content;
+        if($note->save())
+        {
+            return response()->json(array(
+                'status'=>'SUCCESS',
+                'msg'=>'Successfully update a note.'
+            ));
+        }else{
+            return response()->json(array(
+                'status'=>'ERROR',
+                'msg'=>'Failed to update.'
+            ));
+        }
+    }
 }

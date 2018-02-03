@@ -4,9 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Note;
+use Ramsey\Uuid\Uuid;
+use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
 
 class NotesController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth:api');
+    }
+    //获取当前用户的笔记列表，以文件夹分类方式返回json
     public function getNotesList()
     {
         $author = auth()->user()->email;
@@ -53,6 +59,7 @@ class NotesController extends Controller
         return response()->json($result);
     }
 
+    //获取一条笔记的详细信息
     public function getSingleNote($uuid)
     {
         $note = Note::where('uuid', $uuid)->first();
@@ -67,6 +74,37 @@ class NotesController extends Controller
         ));
     }
 
+    public function createNote()
+    {
+        //为新建的文章生成一个uuid
+        try{
+            $uuid = Uuid::uuid1()->toString();
+        }catch(UnsatisfiedDependencyException $e){
+            return response()->json(array(
+                'status' => 'ERROR',
+                'msg' => 'UUID exception: ' . $e->getMessage()
+            ));
+        }
+        $note=new Note;
+        $note->uuid=$uuid;
+        $note->author=auth()->user()->email;
+        $note->title="Untitled Note";
+        $note->content="# New Note";
+        $nore->category=$request->category;
+        if($note->save()){
+            return response()->json(array(
+                'status' => 'SUCCESS',
+                'msg' => 'Successfully create a note.'
+            ));
+        }else{
+            return response()->json(array(
+                'status' => 'ERROR',
+                'msg' => 'Failed to create a note'
+            ));
+        }
+    }
+
+    //更新一条笔记
     public function updateSingleNote(Request $request, $uuid)
     {
         $note = Note::where('uuid', $uuid)->first();
@@ -84,6 +122,8 @@ class NotesController extends Controller
             ));
         }
     }
+
+    //删除一条笔记
     public function deleteSingleNote($uuid)
     {
         $note = Note::where('uuid', $uuid)->first();

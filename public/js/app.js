@@ -84194,7 +84194,7 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, "\n.notesrepo-left {\r\n    width: 230px;\r\n    -webkit-box-flex: 0;\r\n        -ms-flex-positive: 0;\r\n            flex-grow: 0;\r\n    -ms-flex-negative: 0;\r\n        flex-shrink: 0;\r\n    pointer-events: none;\r\n    position: relative;\r\n    z-index: 99;\n}\n.notesrepo-right {\r\n    height: 100vh;\r\n    -webkit-box-shadow: rgba(84, 70, 35, 0.3) 0px 6px 20px;\r\n            box-shadow: rgba(84, 70, 35, 0.3) 0px 6px 20px;\r\n    -webkit-box-flex: 1;\r\n        -ms-flex-positive: 1;\r\n            flex-grow: 1;\r\n    -ms-flex-negative: 1;\r\n        flex-shrink: 1;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    -webkit-box-direction: normal;\r\n        -ms-flex-direction: column;\r\n            flex-direction: column;\r\n    z-index: 1;\r\n    width: calc(100vw - 230px);\r\n    max-height: 100%;\n}\n.notesrepo-header {\r\n    z-index: 100;\r\n    -webkit-box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);\r\n            box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);\r\n    padding: 0;\n}\n.notesrepo-toggler {\r\n    padding: 11px;\r\n    cursor: pointer;\n}\n.notesrepo-toggler svg {\r\n    height: 18px;\r\n    width: 18px;\n}\n.notesrepo-note {\r\n    word-wrap: break-word;\r\n    max-width: 100%;\r\n    overflow-y: auto;\n}\n.notesrepo-new {\r\n    display: block;\r\n    -webkit-box-flex: 0;\r\n        -ms-flex: 0 0 auto;\r\n            flex: 0 0 auto;\r\n    margin-top: auto;\r\n    -webkit-box-shadow: rgba(0, 0, 0, 0.05) 0px 1px inset;\r\n            box-shadow: rgba(0, 0, 0, 0.05) 0px 1px inset;\n}\n.el-main {\r\n    background-color: #e9eef3;\n}\r\n", ""]);
+exports.push([module.i, "\n.notesrepo-left {\r\n    width: 230px;\r\n    -webkit-box-flex: 0;\r\n        -ms-flex-positive: 0;\r\n            flex-grow: 0;\r\n    -ms-flex-negative: 0;\r\n        flex-shrink: 0;\r\n    pointer-events: none;\r\n    position: relative;\r\n    z-index: 99;\n}\n.notesrepo-side-container{\r\n    padding: 10px;\n}\n.notesrepo-right {\r\n    height: 100vh;\r\n    -webkit-box-shadow: rgba(84, 70, 35, 0.3) 0px 6px 20px;\r\n            box-shadow: rgba(84, 70, 35, 0.3) 0px 6px 20px;\r\n    -webkit-box-flex: 1;\r\n        -ms-flex-positive: 1;\r\n            flex-grow: 1;\r\n    -ms-flex-negative: 1;\r\n        flex-shrink: 1;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    -webkit-box-direction: normal;\r\n        -ms-flex-direction: column;\r\n            flex-direction: column;\r\n    z-index: 1;\r\n    width: calc(100vw - 230px);\r\n    max-height: 100%;\n}\n.notesrepo-header {\r\n    z-index: 100;\r\n    -webkit-box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);\r\n            box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);\r\n    padding: 0;\n}\n.notesrepo-toggler {\r\n    padding: 11px;\r\n    cursor: pointer;\r\n    display: inline-block;\n}\n.notesrepo-toggler svg {\r\n    height: 18px;\r\n    width: 18px;\n}\n.notesrepo-note {\r\n    word-wrap: break-word;\r\n    max-width: 100%;\r\n    overflow-y: auto;\n}\n.notesrepo-new {\r\n    display: block;\r\n    -webkit-box-flex: 0;\r\n        -ms-flex: 0 0 auto;\r\n            flex: 0 0 auto;\r\n    margin-top: auto;\r\n    -webkit-box-shadow: rgba(0, 0, 0, 0.05) 0px 1px inset;\r\n            box-shadow: rgba(0, 0, 0, 0.05) 0px 1px inset;\n}\n.el-main {\r\n    background-color: #e9eef3;\n}\r\n", ""]);
 
 // exports
 
@@ -84244,6 +84244,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_Empty___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_Empty__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_UserInfo__ = __webpack_require__(233);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_UserInfo___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_UserInfo__);
+//
+//
+//
 //
 //
 //
@@ -91071,33 +91074,41 @@ var render = function() {
           attrs: { width: _vm.asideWidth }
         },
         [
-          _vm.user ? _c("UserInfo", { attrs: { user: _vm.user } }) : _vm._e(),
-          _vm._v(" "),
           _c(
-            "el-button",
-            {
-              attrs: { type: "primary", plain: "" },
-              on: { click: _vm.newNote }
-            },
-            [_vm._v("新笔记")]
-          ),
-          _vm._v(" "),
-          _c("el-button", { attrs: { type: "primary", plain: "" } }, [
-            _vm._v("新目录")
-          ]),
-          _vm._v(" "),
-          _c("el-tree", {
-            attrs: {
-              data: _vm.notesList,
-              props: _vm.notesListProps,
-              accordion: ""
-            },
-            on: { "node-click": _vm.handleNodeClick }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "notesrepo-new" }, [_vm._v("New Note")])
-        ],
-        1
+            "div",
+            { staticClass: "notesrepo-side-container" },
+            [
+              _vm.user
+                ? _c("UserInfo", { attrs: { user: _vm.user } })
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "el-button",
+                {
+                  attrs: { type: "primary", plain: "" },
+                  on: { click: _vm.newNote }
+                },
+                [_vm._v("新笔记")]
+              ),
+              _vm._v(" "),
+              _c("el-button", { attrs: { type: "primary", plain: "" } }, [
+                _vm._v("新目录")
+              ]),
+              _vm._v(" "),
+              _c("el-tree", {
+                attrs: {
+                  data: _vm.notesList,
+                  props: _vm.notesListProps,
+                  accordion: ""
+                },
+                on: { "node-click": _vm.handleNodeClick }
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "notesrepo-new" }, [_vm._v("New Note")])
+            ],
+            1
+          )
+        ]
       ),
       _vm._v(" "),
       _c(
@@ -91128,8 +91139,8 @@ var render = function() {
                         height: "18px"
                       },
                       attrs: {
-                        width: "100%",
-                        height: "100%",
+                        width: "18px",
+                        height: "18px",
                         viewBox: "0 0 14 14"
                       }
                     },
@@ -91143,7 +91154,9 @@ var render = function() {
                     ]
                   )
                 ]
-              )
+              ),
+              _vm._v(" "),
+              _c("span", [_vm._v("保存")])
             ]
           ),
           _vm._v(" "),

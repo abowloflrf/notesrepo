@@ -24,7 +24,13 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function ($router) {
 });
 Route::group(['middleware' => 'api', 'prefix' => 'notes'], function ($router) {
     Route::get('', 'NotesController@getNotesList');
+    Route::post('', 'NotesController@createNote');
     Route::get('{uuid}', 'NotesController@getSingleNote');
     Route::post('{uuid}', 'NotesController@updateSingleNote');
     Route::delete('{uuid}', 'NotesController@deleteSingleNote');
+});
+Route::group(['middleware' => 'api', 'prefix' => 'folder'], function ($router) {
+    Route::post('new', 'FolderController@createFolder');
+    Route::delete('empty', 'FolderController@emptyFolder');
+    Route::post('rename', 'FolderController@renameFolder');
 });

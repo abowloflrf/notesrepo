@@ -1,17 +1,20 @@
 <template>
     <el-container>
         <el-aside class="noterepo-left" :width="asideWidth" v-bind:style="{ width: asideWidth }">
-            <UserInfo v-if="user" :user="user"></UserInfo>
-            <el-button type="primary" @click="newNote" plain>新笔记</el-button>
-            <el-button type="primary" plain>新目录</el-button>
-            <el-tree :data="notesList" :props="notesListProps" accordion @node-click="handleNodeClick"></el-tree>
-            <div class="notesrepo-new">New Note</div>
+            <div class="notesrepo-side-container">
+                <UserInfo v-if="user" :user="user"></UserInfo>
+                <el-button type="primary" @click="newNote" plain>新笔记</el-button>
+                <el-button type="primary" plain>新目录</el-button>
+                <el-tree :data="notesList" :props="notesListProps" accordion @node-click="handleNodeClick"></el-tree>
+                <div class="notesrepo-new">New Note</div>
+            </div>
         </el-aside>
         <el-container class="notesrepo-right">
             <el-header class="notesrepo-header" :height="headerHeight">
                 <div class="notesrepo-toggler" @click="hideSidebar">   
-                    <svg width="100%" height="100%" viewBox="0 0 14 14" style="fill: currentcolor; display: block; width: 18px; height: 18px;"><path d="M0,1.25 L14,1.25 L14,2.75 L0,2.75 L0,1.25 Z M0,6.25 L14,6.25 L14,7.75 L0,7.75 L0,6.25 Z M0,11.25 L14,11.25 L14,12.75 L0,12.75 L0,11.25 Z"></path></svg>
+                    <svg width="18px" height="18px" viewBox="0 0 14 14" style="fill: currentcolor; display: block; width: 18px; height: 18px;"><path d="M0,1.25 L14,1.25 L14,2.75 L0,2.75 L0,1.25 Z M0,6.25 L14,6.25 L14,7.75 L0,7.75 L0,6.25 Z M0,11.25 L14,11.25 L14,12.75 L0,12.75 L0,11.25 Z"></path></svg>
                 </div>
+                <span>保存</span>
             </el-header>
             <el-main v-loading="noteLoading">
                 <div class="notesrepo-note" v-if="currentNote">
@@ -111,6 +114,9 @@ export default {
     position: relative;
     z-index: 99;
 }
+.notesrepo-side-container{
+    padding: 10px;
+}
 .notesrepo-right {
     height: 100vh;
     box-shadow: rgba(84, 70, 35, 0.3) 0px 6px 20px;
@@ -130,6 +136,7 @@ export default {
 .notesrepo-toggler {
     padding: 11px;
     cursor: pointer;
+    display: inline-block;
 }
 .notesrepo-toggler svg {
     height: 18px;

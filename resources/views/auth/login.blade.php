@@ -1,69 +1,64 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
-
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('login') }}">
-                        {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Login
-                                </button>
-
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Forgot Your Password?
-                                </a>
-                            </div>
-                        </div>
-                    </form>
+<style>
+.form-box{
+    margin-right:auto;
+    margin-left:auto;
+    margin-top:40px;
+    padding:40px 20px;
+    max-width:500px;
+}
+</style>
+<div class="box form-box">
+    <form id="login-form" method="POST" action="{{ route('login') }}">
+    {{ csrf_field() }}
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label">Email:</label>
+            </div>
+            <div class="field-body">
+                <div class="field">
+                    <div class="control">
+                        <input class="input{{ $errors->has('email') ? ' is-danger' : '' }}" type="email" name="email" value="{{ old('email') }}" required autofocus>
+                    </div>
+                    @if ($errors->has('email'))
+                        <p class="help is-danger">
+                            {{ $errors->first('email') }}
+                        </p>
+                    @endif   
                 </div>
             </div>
         </div>
-    </div>
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label">Password:</label>
+            </div>
+            <div class="field-body">
+                <div class="field">
+                    <div class="control">
+                        <input class="input{{ $errors->has('password') ? ' is-danger' : '' }}" type="password" name="password" required>
+                    </div>
+                    @if ($errors->has('password'))
+                        <p class="help is-danger">
+                            {{ $errors->first('password') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
+        </div>
+        <div class="field is-horizontal">
+        <div class="field-label">
+            <!-- Left empty for spacing -->
+        </div>
+        <div class="field-body">
+            <div class="field">
+            <div class="control">
+                <button class="button is-primary" type="submit">登陆</button>
+            </div>
+            </div>
+        </div>
+        </div>
+    </form>
 </div>
 @endsection

@@ -6,6 +6,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Ramsey\Uuid\Uuid;
 
 class RegisterController extends Controller
 {
@@ -18,7 +19,7 @@ class RegisterController extends Controller
     | validation and creation. By default this controller uses a trait to
     | provide this functionality without requiring any additional code.
     |
-    */
+     */
 
     use RegistersUsers;
 
@@ -62,6 +63,15 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        //为新用户新建一篇笔记
+        $uuid = Uuid::uuid4()->toString();
+        DB::table('notes')->insert([
+            'uuid' => $uuid,
+            'author' => $data['email'],
+            'title' => "欢迎使用 NotesRepo",
+            'content' => "# Markdown 标题",
+            'category' => 'Start'
+        ]);
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],

@@ -34,3 +34,7 @@ Route::group(['middleware' => 'api', 'prefix' => 'folder'], function ($router) {
     Route::delete('empty', 'FolderController@emptyFolder');
     Route::post('rename', 'FolderController@renameFolder');
 });
+Route::group(['prefix' => 'api','prefix'=>'todo'], function ($router) {
+    Route::get('','TodosController@get');
+    Route::post('','TodosController@update');
+});

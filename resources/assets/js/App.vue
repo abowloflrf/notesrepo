@@ -2,11 +2,11 @@
     <el-container>
         <el-aside class="noterepo-left" :width="asideWidth" v-bind:style="{ width: asideWidth }">
             <div class="notesrepo-side-container">
-                <UserInfo v-if="user" :user="user"></UserInfo>
-                <el-button type="primary" @click="newNote" plain>新笔记</el-button>
-                <el-button type="primary" plain>新目录</el-button>
+                <!-- <UserInfo v-if="user" :user="user"></UserInfo> -->
+                <!-- <el-button type="primary" @click="newNote" plain>新笔记</el-button>
+                <el-button type="primary" plain>新目录</el-button> -->
                 <el-tree :data="notesList" :props="notesListProps" accordion @node-click="handleNodeClick"></el-tree>
-                <div class="notesrepo-new">New Note</div>
+                <!-- <div class="notesrepo-new">New Note</div> -->
             </div>
         </el-aside>
         <el-container class="notesrepo-right">
@@ -14,7 +14,6 @@
                 <div class="notesrepo-toggler" @click="hideSidebar">   
                     <svg width="18px" height="18px" viewBox="0 0 14 14" style="fill: currentcolor; display: block; width: 18px; height: 18px;"><path d="M0,1.25 L14,1.25 L14,2.75 L0,2.75 L0,1.25 Z M0,6.25 L14,6.25 L14,7.75 L0,7.75 L0,6.25 Z M0,11.25 L14,11.25 L14,12.75 L0,12.75 L0,11.25 Z"></path></svg>
                 </div>
-                <span>保存</span>
             </el-header>
             <el-main v-loading="noteLoading">
                 <div class="notesrepo-note" v-if="currentNote">
@@ -23,7 +22,9 @@
                 <Empty v-else></Empty >
             </el-main>
         </el-container>
-        <div id="todo-btn" @click="showTodo = true"></div>
+        <div id="todo-btn" @click="showTodo = true">
+            <i class="el-icon-tickets"></i>
+        </div>
         <el-dialog
             title="TODOs"
             :visible.sync="showTodo"
@@ -177,10 +178,21 @@ export default {
     border-radius: 50%;
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
     z-index: 999;
+    cursor: pointer;
+}
+#todo-btn:hover{
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.4);
+    transition: 0.2s;
+}
+#todo-btn i{
+    color: #606266;
+    font-size: 30px;
+    line-height: 50px;
+    position: relative;
+    left: 9px;
 }
 .notesrepo-todo-dialog{
     padding: 0 20px;
-
 }
 .notesrepo-todo-dialog .el-dialog{
     max-width: 500px;

@@ -47,4 +47,16 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
+    public function todo()
+    {
+        return $this->hasOne('App\Todo','email','email')->withDefault([
+            'all_todos' => null
+        ]);
+    }
+
+    public function notes()
+    {
+        return $this->hasMany('App\Note','author','email');
+    }
 }

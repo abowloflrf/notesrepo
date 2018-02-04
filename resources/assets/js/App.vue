@@ -23,6 +23,14 @@
                 <Empty v-else></Empty >
             </el-main>
         </el-container>
+        <div id="todo-btn" @click="showTodo = true"></div>
+        <el-dialog
+            title="TODOs"
+            :visible.sync="showTodo"
+            top="10vh"
+            class="notesrepo-todo-dialog">
+            <Todo v-if="showTodo"></Todo>
+        </el-dialog>
     </el-container>
 </template>
 
@@ -30,12 +38,14 @@
 import Editor from "./components/Editor"
 import Empty from "./components/Empty"
 import UserInfo from "./components/UserInfo"
+import Todo from "./components/Todo"
 
 export default {
     components: {
         Editor,
         Empty,
-        UserInfo
+        UserInfo,
+        Todo
     },
     data() {
         return {
@@ -49,7 +59,8 @@ export default {
             },
             noteLoading: false,
             headerHeight: "40px",
-            asideWidth: "230px"
+            asideWidth: "230px",
+            showTodo:false
         }
     },
     methods: {
@@ -114,7 +125,7 @@ export default {
     position: relative;
     z-index: 99;
 }
-.notesrepo-side-container{
+.notesrepo-side-container {
     padding: 10px;
 }
 .notesrepo-right {
@@ -155,5 +166,24 @@ export default {
 }
 .el-main {
     background-color: #e9eef3;
+}
+#todo-btn {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: #eeeeee;
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+}
+.notesrepo-todo-dialog{
+    padding: 0 20px;
+
+}
+.notesrepo-todo-dialog .el-dialog{
+    max-width: 500px;
+    width: auto;
 }
 </style>

@@ -84194,7 +84194,7 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, "\n.notesrepo-left {\r\n    width: 230px;\r\n    -webkit-box-flex: 0;\r\n        -ms-flex-positive: 0;\r\n            flex-grow: 0;\r\n    -ms-flex-negative: 0;\r\n        flex-shrink: 0;\r\n    pointer-events: none;\r\n    position: relative;\r\n    z-index: 99;\n}\n.notesrepo-side-container{\r\n    padding: 10px;\n}\n.notesrepo-right {\r\n    height: 100vh;\r\n    -webkit-box-shadow: rgba(84, 70, 35, 0.3) 0px 6px 20px;\r\n            box-shadow: rgba(84, 70, 35, 0.3) 0px 6px 20px;\r\n    -webkit-box-flex: 1;\r\n        -ms-flex-positive: 1;\r\n            flex-grow: 1;\r\n    -ms-flex-negative: 1;\r\n        flex-shrink: 1;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    -webkit-box-direction: normal;\r\n        -ms-flex-direction: column;\r\n            flex-direction: column;\r\n    z-index: 1;\r\n    width: calc(100vw - 230px);\r\n    max-height: 100%;\n}\n.notesrepo-header {\r\n    z-index: 100;\r\n    -webkit-box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);\r\n            box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);\r\n    padding: 0;\n}\n.notesrepo-toggler {\r\n    padding: 11px;\r\n    cursor: pointer;\r\n    display: inline-block;\n}\n.notesrepo-toggler svg {\r\n    height: 18px;\r\n    width: 18px;\n}\n.notesrepo-note {\r\n    word-wrap: break-word;\r\n    max-width: 100%;\r\n    overflow-y: auto;\n}\n.notesrepo-new {\r\n    display: block;\r\n    -webkit-box-flex: 0;\r\n        -ms-flex: 0 0 auto;\r\n            flex: 0 0 auto;\r\n    margin-top: auto;\r\n    -webkit-box-shadow: rgba(0, 0, 0, 0.05) 0px 1px inset;\r\n            box-shadow: rgba(0, 0, 0, 0.05) 0px 1px inset;\n}\n.el-main {\r\n    background-color: #e9eef3;\n}\r\n", ""]);
+exports.push([module.i, "\n.notesrepo-left {\r\n    width: 230px;\r\n    -webkit-box-flex: 0;\r\n        -ms-flex-positive: 0;\r\n            flex-grow: 0;\r\n    -ms-flex-negative: 0;\r\n        flex-shrink: 0;\r\n    pointer-events: none;\r\n    position: relative;\r\n    z-index: 99;\n}\n.notesrepo-side-container {\r\n    padding: 10px;\n}\n.notesrepo-right {\r\n    height: 100vh;\r\n    -webkit-box-shadow: rgba(84, 70, 35, 0.3) 0px 6px 20px;\r\n            box-shadow: rgba(84, 70, 35, 0.3) 0px 6px 20px;\r\n    -webkit-box-flex: 1;\r\n        -ms-flex-positive: 1;\r\n            flex-grow: 1;\r\n    -ms-flex-negative: 1;\r\n        flex-shrink: 1;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    -webkit-box-direction: normal;\r\n        -ms-flex-direction: column;\r\n            flex-direction: column;\r\n    z-index: 1;\r\n    width: calc(100vw - 230px);\r\n    max-height: 100%;\n}\n.notesrepo-header {\r\n    z-index: 100;\r\n    -webkit-box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);\r\n            box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);\r\n    padding: 0;\n}\n.notesrepo-toggler {\r\n    padding: 11px;\r\n    cursor: pointer;\r\n    display: inline-block;\n}\n.notesrepo-toggler svg {\r\n    height: 18px;\r\n    width: 18px;\n}\n.notesrepo-note {\r\n    word-wrap: break-word;\r\n    max-width: 100%;\r\n    overflow-y: auto;\n}\n.notesrepo-new {\r\n    display: block;\r\n    -webkit-box-flex: 0;\r\n        -ms-flex: 0 0 auto;\r\n            flex: 0 0 auto;\r\n    margin-top: auto;\r\n    -webkit-box-shadow: rgba(0, 0, 0, 0.05) 0px 1px inset;\r\n            box-shadow: rgba(0, 0, 0, 0.05) 0px 1px inset;\n}\n.el-main {\r\n    background-color: #e9eef3;\n}\n#todo-btn {\r\n    position: absolute;\r\n    bottom: 30px;\r\n    right: 30px;\r\n    width: 50px;\r\n    height: 50px;\r\n    background: #eeeeee;\r\n    border-radius: 50%;\r\n    -webkit-box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);\r\n            box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);\r\n    z-index: 999;\n}\n.notesrepo-todo-dialog{\r\n    padding: 0 20px;\n}\n.notesrepo-todo-dialog .el-dialog{\r\n    max-width: 500px;\r\n    width: auto;\n}\r\n", ""]);
 
 // exports
 
@@ -84244,6 +84244,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_Empty___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_Empty__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_UserInfo__ = __webpack_require__(233);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_UserInfo___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_UserInfo__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Todo__ = __webpack_require__(246);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Todo___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_Todo__);
 //
 //
 //
@@ -84272,6 +84274,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -84281,7 +84292,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     components: {
         Editor: __WEBPACK_IMPORTED_MODULE_0__components_Editor___default.a,
         Empty: __WEBPACK_IMPORTED_MODULE_1__components_Empty___default.a,
-        UserInfo: __WEBPACK_IMPORTED_MODULE_2__components_UserInfo___default.a
+        UserInfo: __WEBPACK_IMPORTED_MODULE_2__components_UserInfo___default.a,
+        Todo: __WEBPACK_IMPORTED_MODULE_3__components_Todo___default.a
     },
     data: function data() {
         return {
@@ -84295,7 +84307,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             },
             noteLoading: false,
             headerHeight: "40px",
-            asideWidth: "230px"
+            asideWidth: "230px",
+            showTodo: false
         };
     },
 
@@ -91186,6 +91199,30 @@ var render = function() {
           )
         ],
         1
+      ),
+      _vm._v(" "),
+      _c("div", {
+        attrs: { id: "todo-btn" },
+        on: {
+          click: function($event) {
+            _vm.showTodo = true
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c(
+        "el-dialog",
+        {
+          staticClass: "notesrepo-todo-dialog",
+          attrs: { title: "TODOs", visible: _vm.showTodo, top: "10vh" },
+          on: {
+            "update:visible": function($event) {
+              _vm.showTodo = $event
+            }
+          }
+        },
+        [_vm.showTodo ? _c("Todo") : _vm._e()],
+        1
       )
     ],
     1
@@ -91206,6 +91243,136 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 240 */,
+/* 241 */,
+/* 242 */,
+/* 243 */,
+/* 244 */,
+/* 245 */,
+/* 246 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(247)
+}
+var normalizeComponent = __webpack_require__(20)
+/* script */
+var __vue_script__ = __webpack_require__(249)
+/* template */
+var __vue_template__ = __webpack_require__(250)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\Todo.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-e6707986", Component.options)
+  } else {
+    hotAPI.reload("data-v-e6707986", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 247 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(248);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(16)("6663baa3", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e6707986\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Todo.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e6707986\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Todo.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 248 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(7)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 249 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+/* 250 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("h1", [_vm._v("TODO TITLE")])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-e6707986", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

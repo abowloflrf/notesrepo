@@ -339,6 +339,12 @@ export default {
 
 <style>
 @import "~simplemde/dist/simplemde.min.css";
+body {
+    font-family: "PingFang SC", "Source Han Sans CN", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+}
+.CodeMirror-code{
+    font-family: 'Fira Code', monospace;
+}
 .el-tree {
     margin-bottom: 20px;
 }
@@ -347,6 +353,9 @@ export default {
 }
 .el-container {
     overflow: hidden;
+}
+.el-message{
+    min-width: 200px!important;
 }
 .notesrepo-left {
     position: absolute;

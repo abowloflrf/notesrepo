@@ -2,12 +2,7 @@
     <div>
         <el-button class="notesrepo-save-btn" type="primary" :loading="saveLoading" @click="saveNote" plain>保存</el-button>
         <el-button class="notesrepo-del-btn" type="danger" :loading="deleteLoading" @click="deleteNote" plain>删除</el-button>
-        
-        <div class="notesrepo-title" v-if="!isEditingTitle">
-            <h1>{{note.title}}</h1>
-            <el-button class="notesrepo-title-btn" type="primary" @click="isEditingTitle=!isEditingTitle" plain>编辑标题</el-button>
-        </div>
-        <div class="notesrepo-title" v-else>
+        <div class="notesrepo-title">
             <el-input class="notesrepo-title-input" v-model="note.title" placeholder="请输入标题"></el-input>
         </div>
         <markdown-editor v-model="content" :configs="configs" ref="markdownEditor"></markdown-editor>
@@ -30,11 +25,10 @@ export default {
         return {
             saveLoading: false,
             deleteLoading: false,
-            isEditingTitle: false,
             content: this.note.content,
             configs: {
                 spellChecker: false, // 禁用拼写检查
-                hideIcons: ["guide", "side-by-side", "fullscreen"]
+                toolbar: ["bold", "italic", "heading", "link", "image", "|", "preview"]
             }
         }
     },
@@ -48,8 +42,8 @@ export default {
                 })
                 .then(response => {
                     this.saveLoading = false
-                    if(this.isEditingTitle){
-                        this.isEditingTitle=false
+                    if (this.isEditingTitle) {
+                        this.isEditingTitle = false
                     }
                     if (response.data.status == "SUCCESS") {
                         this.$message({
@@ -101,17 +95,17 @@ export default {
 </script>
 
 <style>
+.el-message-box {
+    width: 240px;
+}
 .notesrepo-save-btn {
     margin-bottom: 20px;
 }
 .notesrepo-title {
     margin-bottom: 10px;
 }
-.notesrepo-title h1 {
-    display: inline;
-}
 .notesrepo-title-input {
-    width: auto;
+    width: 100%;
 }
 .notesrepo-title-btn {
     margin-left: 10px;

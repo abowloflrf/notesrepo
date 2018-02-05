@@ -4,15 +4,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>{{ config('app.name', 'Laravel') }}</title>
-
     <!-- Styles -->
     <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
     <link href="https://cdn.bootcss.com/bulma/0.6.2/css/bulma.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/axios/0.17.1/axios.min.js"></script>
 </head>
 <style>
 body{
@@ -52,5 +50,6 @@ nav{
 </div>
     <!-- Scripts -->
     <!-- <script src="{{ asset('js/app.js') }}"></script> -->
+    <script src="{{ asset('js/form.js') }}"></script>
 </body>
 </html>

@@ -90,7 +90,7 @@ export default {
     width: 40px;
     height: 40px;
     position: absolute;
-    top: 8px;
+    top: 4px;
     bottom: 0;
     margin: auto 0;
     border: none;

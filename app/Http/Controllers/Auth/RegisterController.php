@@ -7,6 +7,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Ramsey\Uuid\Uuid;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
@@ -28,7 +32,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/workspace';
+    protected $redirectTo = '/login';
 
     /**
      * Create a new controller instance.
@@ -78,6 +82,30 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+
+    /**
+     * 修改了Laravel默认的RegistersUsers trait中的register方法
+     * 注释掉了$this->guard()->login($user)使得在用户注册新账号之后
+     * 不会login、写入session，能跳转到login页面，再次登陆以调用auth:api
+     * 将jwt写入localStorage，以供后面workspace的Vue使用
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     * 
+     */
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        //$this->guard()->login($user);
+
+        return $this->registered($request, $user)
+            ? : redirect($this->redirectPath());
+    }
+
     protected function guard()
     {
         return Auth::guard('web');

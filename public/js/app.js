@@ -28562,21 +28562,41 @@ __webpack_require__(83);
 window.Vue = __webpack_require__(3);
 
 
-Vue.use(__WEBPACK_IMPORTED_MODULE_0_element_ui__["Aside"]);
-Vue.use(__WEBPACK_IMPORTED_MODULE_0_element_ui__["Button"]);
-Vue.use(__WEBPACK_IMPORTED_MODULE_0_element_ui__["Container"]);
-Vue.use(__WEBPACK_IMPORTED_MODULE_0_element_ui__["Dialog"]);
-Vue.use(__WEBPACK_IMPORTED_MODULE_0_element_ui__["Header"]);
-Vue.use(__WEBPACK_IMPORTED_MODULE_0_element_ui__["Icon"]);
-Vue.use(__WEBPACK_IMPORTED_MODULE_0_element_ui__["Input"]);
-Vue.use(__WEBPACK_IMPORTED_MODULE_0_element_ui__["Main"]);
-Vue.use(__WEBPACK_IMPORTED_MODULE_0_element_ui__["Message"]);
-Vue.use(__WEBPACK_IMPORTED_MODULE_0_element_ui__["Table"]);
-Vue.use(__WEBPACK_IMPORTED_MODULE_0_element_ui__["TableColumn"]);
-Vue.use(__WEBPACK_IMPORTED_MODULE_0_element_ui__["Tree"]);
 
-Vue.use(__WEBPACK_IMPORTED_MODULE_0_element_ui__["Loading"].directive);
-Vue.prototype.$message = __WEBPACK_IMPORTED_MODULE_0_element_ui__["Message"];
+Vue.use(__WEBPACK_IMPORTED_MODULE_0_element_ui___default.a);
+
+// import {
+//     Aside,
+//     Button,
+//     Container,
+//     Dialog,
+//     Header,
+//     Icon,
+//     Input,
+//     Loading,
+//     Main,
+//     Message,
+//     Table,
+//     TableColumn,
+//     Tree
+// } from 'element-ui'
+// import 'element-ui/lib/theme-chalk/index.css'
+// Vue.use(Aside);
+// Vue.use(Button);
+// Vue.use(Container);
+// Vue.use(Dialog);
+// Vue.use(Header);
+// Vue.use(Icon)
+// Vue.use(Input);
+// Vue.use(Main);
+// Vue.use(Message);
+// Vue.use(Table)
+// Vue.use(TableColumn)
+// Vue.use(Tree);
+
+// Vue.use(Loading.directive)
+// Vue.prototype.$message = Message
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -71758,7 +71778,7 @@ exports = module.exports = __webpack_require__(6)(false);
 
 
 // module
-exports.push([module.i, "\n.notesrepo-save-btn {\r\n    margin-bottom: 20px;\n}\n.notesrepo-title {\r\n    margin-bottom: 10px;\n}\n.notesrepo-title h1 {\r\n    display: inline;\n}\n.notesrepo-title-input {\r\n    width: auto;\n}\n.notesrepo-title-btn {\r\n    margin-left: 10px;\n}\r\n", ""]);
+exports.push([module.i, "\n.el-message-box {\r\n    width: 240px;\n}\n.notesrepo-save-btn {\r\n    margin-bottom: 20px;\n}\n.notesrepo-title {\r\n    margin-bottom: 10px;\n}\n.notesrepo-title-input {\r\n    width: 100%;\n}\n.notesrepo-title-btn {\r\n    margin-left: 10px;\n}\r\n", ""]);
 
 // exports
 
@@ -71786,11 +71806,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
 
 
 
@@ -71803,11 +71818,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             saveLoading: false,
             deleteLoading: false,
-            isEditingTitle: false,
             content: this.note.content,
             configs: {
                 spellChecker: false, // 禁用拼写检查
-                hideIcons: ["guide", "side-by-side", "fullscreen"]
+                toolbar: ["bold", "italic", "heading", "link", "image", "|", "preview"]
             }
         };
     },
@@ -78000,47 +78014,24 @@ var render = function() {
         [_vm._v("删除")]
       ),
       _vm._v(" "),
-      !_vm.isEditingTitle
-        ? _c(
-            "div",
-            { staticClass: "notesrepo-title" },
-            [
-              _c("h1", [_vm._v(_vm._s(_vm.note.title))]),
-              _vm._v(" "),
-              _c(
-                "el-button",
-                {
-                  staticClass: "notesrepo-title-btn",
-                  attrs: { type: "primary", plain: "" },
-                  on: {
-                    click: function($event) {
-                      _vm.isEditingTitle = !_vm.isEditingTitle
-                    }
-                  }
-                },
-                [_vm._v("编辑标题")]
-              )
-            ],
-            1
-          )
-        : _c(
-            "div",
-            { staticClass: "notesrepo-title" },
-            [
-              _c("el-input", {
-                staticClass: "notesrepo-title-input",
-                attrs: { placeholder: "请输入标题" },
-                model: {
-                  value: _vm.note.title,
-                  callback: function($$v) {
-                    _vm.$set(_vm.note, "title", $$v)
-                  },
-                  expression: "note.title"
-                }
-              })
-            ],
-            1
-          ),
+      _c(
+        "div",
+        { staticClass: "notesrepo-title" },
+        [
+          _c("el-input", {
+            staticClass: "notesrepo-title-input",
+            attrs: { placeholder: "请输入标题" },
+            model: {
+              value: _vm.note.title,
+              callback: function($$v) {
+                _vm.$set(_vm.note, "title", $$v)
+              },
+              expression: "note.title"
+            }
+          })
+        ],
+        1
+      ),
       _vm._v(" "),
       _c("markdown-editor", {
         ref: "markdownEditor",
@@ -78412,7 +78403,7 @@ exports = module.exports = __webpack_require__(6)(false);
 
 
 // module
-exports.push([module.i, "\n.toggle {\r\n    text-align: center;\r\n    width: 40px;\r\n    height: 40px;\r\n    position: absolute;\r\n    top: 8px;\r\n    bottom: 0;\r\n    margin: auto 0;\r\n    border: none;\r\n    -webkit-appearance: none;\r\n    outline: none;\n}\n.toggle:after {\r\n    content: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"40\" height=\"40\" viewBox=\"-10 -18 100 135\"><circle cx=\"50\" cy=\"50\" r=\"50\" fill=\"none\" stroke=\"#ededed\" stroke-width=\"5\"/></svg>');\n}\n.toggle:checked:after {\r\n    content: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"40\" height=\"40\" viewBox=\"-10 -18 100 135\"><circle cx=\"50\" cy=\"50\" r=\"50\" fill=\"none\" stroke=\"#bddad5\" stroke-width=\"5\"/><path fill=\"#5dc2af\" d=\"M72 25L42 71 27 56l-4 4 20 20 34-52z\"/></svg>');\n}\n.completed {\r\n    color: #d9d9d9;\r\n    text-decoration: line-through;\n}\r\n", ""]);
+exports.push([module.i, "\n.toggle {\r\n    text-align: center;\r\n    width: 40px;\r\n    height: 40px;\r\n    position: absolute;\r\n    top: 4px;\r\n    bottom: 0;\r\n    margin: auto 0;\r\n    border: none;\r\n    -webkit-appearance: none;\r\n    outline: none;\n}\n.toggle:after {\r\n    content: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"40\" height=\"40\" viewBox=\"-10 -18 100 135\"><circle cx=\"50\" cy=\"50\" r=\"50\" fill=\"none\" stroke=\"#ededed\" stroke-width=\"5\"/></svg>');\n}\n.toggle:checked:after {\r\n    content: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"40\" height=\"40\" viewBox=\"-10 -18 100 135\"><circle cx=\"50\" cy=\"50\" r=\"50\" fill=\"none\" stroke=\"#bddad5\" stroke-width=\"5\"/><path fill=\"#5dc2af\" d=\"M72 25L42 71 27 56l-4 4 20 20 34-52z\"/></svg>');\n}\n.completed {\r\n    color: #d9d9d9;\r\n    text-decoration: line-through;\n}\r\n", ""]);
 
 // exports
 

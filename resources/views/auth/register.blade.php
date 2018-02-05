@@ -21,7 +21,7 @@
             <div class="field-body">
                 <div class="field">
                     <div class="control">
-                        <input class="input{{ $errors->has('name') ? ' is-danger' : '' }}" type="text" name="name" value="{{ old('name') }}" required autofocus>
+                        <input id="name" class="input{{ $errors->has('name') ? ' is-danger' : '' }}" type="text" name="name" value="{{ old('name') }}" required autofocus>
                     </div>
                     @if ($errors->has('name'))
                         <p class="help is-danger">
@@ -39,7 +39,7 @@
             <div class="field-body">
                 <div class="field">
                     <div class="control">
-                        <input class="input{{ $errors->has('email') ? ' is-danger' : '' }}" type="email" name="email" required>
+                        <input id="email" class="input{{ $errors->has('email') ? ' is-danger' : '' }}" type="email" name="email" required>
                     </div>
                     @if ($errors->has('email'))
                         <p class="help is-danger">
@@ -57,7 +57,7 @@
             <div class="field-body">
                 <div class="field">
                     <div class="control">
-                        <input class="input{{ $errors->has('password') ? ' is-danger' : '' }}" type="password" name="password" required>
+                        <input id="password" class="input{{ $errors->has('password') ? ' is-danger' : '' }}" type="password" name="password" required>
                     </div>
                     @if ($errors->has('password'))
                         <p class="help is-danger">
@@ -75,7 +75,7 @@
             <div class="field-body">
                 <div class="field">
                     <div class="control">
-                        <input class="input" type="password" name="password_confirmation" required>
+                        <input id="password_confirmation" class="input" type="password" name="password_confirmation" required>
                     </div>
                 </div>
             </div>

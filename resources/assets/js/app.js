@@ -8,37 +8,42 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
-import {
-    Aside,
-    Button,
-    Container,
-    Dialog,
-    Header,
-    Icon,
-    Input,
-    Loading,
-    Main,
-    Message,
-    Table,
-    TableColumn,
-    Tree
-} from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
-Vue.use(Aside);
-Vue.use(Button);
-Vue.use(Container);
-Vue.use(Dialog);
-Vue.use(Header);
-Vue.use(Icon)
-Vue.use(Input);
-Vue.use(Main);
-Vue.use(Message);
-Vue.use(Table)
-Vue.use(TableColumn)
-Vue.use(Tree);
 
-Vue.use(Loading.directive)
-Vue.prototype.$message = Message
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+Vue.use(ElementUI)
+
+// import {
+//     Aside,
+//     Button,
+//     Container,
+//     Dialog,
+//     Header,
+//     Icon,
+//     Input,
+//     Loading,
+//     Main,
+//     Message,
+//     Table,
+//     TableColumn,
+//     Tree
+// } from 'element-ui'
+// import 'element-ui/lib/theme-chalk/index.css'
+// Vue.use(Aside);
+// Vue.use(Button);
+// Vue.use(Container);
+// Vue.use(Dialog);
+// Vue.use(Header);
+// Vue.use(Icon)
+// Vue.use(Input);
+// Vue.use(Main);
+// Vue.use(Message);
+// Vue.use(Table)
+// Vue.use(TableColumn)
+// Vue.use(Tree);
+
+// Vue.use(Loading.directive)
+// Vue.prototype.$message = Message
 
 
 

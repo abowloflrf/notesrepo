@@ -20,7 +20,7 @@
             <div class="field-body">
                 <div class="field">
                     <div class="control">
-                        <input class="input{{ $errors->has('email') ? ' is-danger' : '' }}" type="email" name="email" value="{{ old('email') }}" required autofocus>
+                        <input id="email" class="input{{ $errors->has('email') ? ' is-danger' : '' }}" type="email" name="email" value="{{ old('email') }}" required autofocus>
                     </div>
                     @if ($errors->has('email'))
                         <p class="help is-danger">
@@ -37,7 +37,7 @@
             <div class="field-body">
                 <div class="field">
                     <div class="control">
-                        <input class="input{{ $errors->has('password') ? ' is-danger' : '' }}" type="password" name="password" required>
+                        <input id="password" class="input{{ $errors->has('password') ? ' is-danger' : '' }}" type="password" name="password" required>
                     </div>
                     @if ($errors->has('password'))
                         <p class="help is-danger">
@@ -54,7 +54,7 @@
         <div class="field-body">
             <div class="field">
             <div class="control">
-                <button class="button is-primary" type="submit">登陆</button>
+                <button class="button is-primary" type="button" onclick="handleLogin()">登陆</button>
             </div>
             </div>
         </div>

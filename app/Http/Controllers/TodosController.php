@@ -18,13 +18,9 @@ class TodosController extends Controller
         if ($todos->all_todos == null) {
             $createTodos = new Todo;
             $createTodos->email = auth()->user()->email;
-            $createTodos->all_todos = json_encode(array(
-                []
-            ));
+            $createTodos->all_todos = json_encode([]);
             $createTodos->save();
-            return response()->json(array(
-                []
-            ));
+            return response()->json([]);
         }
         return response()->json(json_decode($todos['all_todos']));
     }

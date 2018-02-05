@@ -74,7 +74,7 @@ class NotesController extends Controller
         ));
     }
 
-    public function createNote()
+    public function createNote(Request $request)
     {
         //为新建的文章生成一个uuid
         try{
@@ -88,12 +88,13 @@ class NotesController extends Controller
         $note=new Note;
         $note->uuid=$uuid;
         $note->author=auth()->user()->email;
-        $note->title="Untitled Note";
-        $note->content="# New Note";
-        $nore->category=$request->category;
+        $note->title=$request->title;
+        $note->content=$request->content;
+        $note->category=$request->category;
         if($note->save()){
             return response()->json(array(
                 'status' => 'SUCCESS',
+                'uuid'=>$note->uuid,
                 'msg' => 'Successfully create a note.'
             ));
         }else{

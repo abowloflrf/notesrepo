@@ -24,7 +24,7 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function ($router) {
 });
 Route::group(['middleware' => 'api', 'prefix' => 'notes'], function ($router) {
     Route::get('', 'NotesController@getNotesList');
-    Route::post('', 'NotesController@createNote');
+    Route::post('new', 'NotesController@createNote');
     Route::get('{uuid}', 'NotesController@getSingleNote');
     Route::post('{uuid}', 'NotesController@updateSingleNote');
     Route::delete('{uuid}', 'NotesController@deleteSingleNote');

@@ -17,8 +17,8 @@ class CreateNotesTable extends Migration
             $table->increments('id');
             $table->string('uuid', 36)->unique();
             $table->string('author');
-            $table->text('title');
-            $table->text('content');
+            $table->text('title')->nullable();
+            $table->text('content')->nullable();
             $table->string('category',20);
             $table->timestamps();
         });

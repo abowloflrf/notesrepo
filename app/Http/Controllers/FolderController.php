@@ -16,9 +16,9 @@ class FolderController extends Controller
     //构造函数，该控制器的所有方法均需要请求用户的email与需要操作的文件夹名
     public function __construct(Request $request)
     {
-        if(auth()->check()){
+        if (auth()->check()) {
             $this->author = auth()->user()->email;
-        }        
+        }
         $this->categoryName = $request->get('category');
         $this->middleware('auth:api');
     }
@@ -27,7 +27,7 @@ class FolderController extends Controller
     public function createFolder()
     {
         //该用户下已经存在同名文件夹
-        if (count(App\Note::where('category', $this->categoryName)->where('author', $this->author)->get()) != 0) {
+        if (count(Note::where('category', $this->categoryName)->where('author', $this->author)->get()) != 0) {
             return response()->json(array(
                 'status' => 'ERROR',
                 'msg' => 'Fodername already exsited.'
@@ -45,13 +45,21 @@ class FolderController extends Controller
         $note = new Note;
         $note->uuid = $uuid;
         $note->author = $this->author;
-        $note->title = "Untitled Note";
+        $note->title = "未命名笔记";
         $note->content = "# Note in " . $this->categoryName;
         $note->category = $this->categoryName;
         if ($note->save()) {
             return response()->json(array(
                 'status' => 'SUCCESS',
-                'msg' => 'Successfully created a folder.'
+                'msg' => 'Successfully created a folder.',
+                'note' => array(
+                    'title' => $note['title'],
+                    'uuid' => $note['uuid'],
+                    'author' => $note['author'],
+                    'created_at' => $note['created_at'],
+                    'category' => $note['category'],
+                    'content' => $note['content']
+                )
             ));
         } else {
             return response()->json(array(

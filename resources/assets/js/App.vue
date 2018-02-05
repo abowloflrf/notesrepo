@@ -23,7 +23,7 @@
                 <div class="notesrepo-new new-note" v-popover:chooseCategory>
                     <el-popover
                         ref="chooseCategory"
-                        placement="top"
+                        placement="bottom"
                         width="160"
                         v-model="showChooseCategory">
                         <p>选择文件夹</p>
@@ -55,7 +55,19 @@
                         </div>
                     </div>
                 </div>
-                <div class="notesrepo-new new-folder">
+                <div class="notesrepo-new new-folder" v-popover:inputFolder>
+                    <el-popover
+                        ref="inputFolder"
+                        placement="bottom"
+                        width="160"
+                        v-model="showInputFolder">
+                        <p>新建文件夹</p>
+                        <el-input v-model="newFolderName" placeholder="文件夹名"></el-input>
+                        <div style="text-align: right; margin-top: 10px">
+                            <el-button size="mini" type="text" @click="showInputFolder=false">取消</el-button>
+                            <el-button type="primary" size="mini" @click="newFolder(newFolderName)">确定</el-button>
+                        </div>
+                    </el-popover>
                     <div class="notesrepo-side-button" style="align-items: center; user-select: none; width: 100%; display: flex;">
                         <div style="display: flex; align-items: center; min-height: 26px; font-size: 16px; padding: 8px 10px; color: rgb(136, 136, 136);">
                             <div style="display: flex; align-items: center; justify-content: center; flex-shrink: 0; flex-grow: 0; margin-right: 4px; color: rgb(186, 185, 184); width: 28px; height: 24px;">
@@ -112,7 +124,6 @@
 </template>
 
 <script>
-import Editor from "./components/Editor"
 import Todo from "./components/Todo"
 import markdownEditor from "vue-simplemde/src/markdown-editor"
 
@@ -140,7 +151,9 @@ export default {
             },
             isSidebarActive: false,
             showChooseCategory: false,
+            showInputFolder: false,
             choosenCategory: "未指定目录",
+            newFolderName: "未命名目录",
             headerHeight: "40px",
             showTodo: false
         }
@@ -150,6 +163,7 @@ export default {
             this.isSidebarActive = !this.isSidebarActive
         },
         handleNodeClick(data) {
+            //判断是笔记还是文件夹，若点击的是笔记则获取详细内容
             if (data.hasOwnProperty("isNote")) {
                 this.noteLoading = true
                 axios
@@ -182,6 +196,8 @@ export default {
                     if (response.data.status == "SUCCESS") {
                         //新建成功回调uuid传回currentNote
                         this.currentNote.uuid = response.data.uuid
+                        //再获取笔记列表
+                        this.refreshList()
                     } else {
                         this.$message({
                             message: "创建笔记出错",
@@ -189,63 +205,29 @@ export default {
                         })
                     }
                 })
-            //再获取笔记列表
-            axios
-                .get("/api/notes")
-                .then(response => {
-                    let tempList = response.data.notes_list
-                    tempList.forEach(e => {
-                        e.notes.forEach(n => {
-                            n["isNote"] = true
-                        })
-                    })
-                    this.notesList = tempList
-                })
-                .catch(function(error) {
-                    console.log(error)
-                })
         },
         saveNote: function() {
             this.saveLoading = true
-            //若currentNote中有uuid则为旧笔记，若无则为新建的笔记
-            if ("uuid" in this.currentNote) {
-                axios
-                    .post("/api/notes/" + this.currentNote.uuid, {
-                        title: this.currentNote.title,
-                        content: this.currentNote.content
-                    })
-                    .then(response => {
-                        this.saveLoading = false
-                        if (response.data.status == "SUCCESS") {
-                            this.$message({
-                                message: "已保存",
-                                type: "success"
-                            })
-                        } else {
-                            this.$message({
-                                message: "保存出错",
-                                type: "error"
-                            })
-                        }
-                    })
-            } else {
-                this.newNote()
-            }
-
-            //再获取笔记列表
             axios
-                .get("/api/notes")
-                .then(response => {
-                    let tempList = response.data.notes_list
-                    tempList.forEach(e => {
-                        e.notes.forEach(n => {
-                            n["isNote"] = true
-                        })
-                    })
-                    this.notesList = tempList
+                .post("/api/notes/" + this.currentNote.uuid, {
+                    title: this.currentNote.title,
+                    content: this.currentNote.content
                 })
-                .catch(function(error) {
-                    console.log(error)
+                .then(response => {
+                    this.saveLoading = false
+                    if (response.data.status == "SUCCESS") {
+                        this.$message({
+                            message: "已保存",
+                            type: "success"
+                        })
+                        //再获取笔记列表
+                        this.refreshList()
+                    } else {
+                        this.$message({
+                            message: "保存出错",
+                            type: "error"
+                        })
+                    }
                 })
         },
         deleteNote: function() {
@@ -259,6 +241,10 @@ export default {
                     axios.delete("/api/notes/" + this.currentNote.uuid).then(response => {
                         this.deleteLoading = false
                         if (response.data.status == "SUCCESS") {
+                            //清空currentNote
+                            this.currentNote = null
+                            //刷新笔记列表
+                            this.refreshList()
                             this.$message({
                                 message: "已删除",
                                 type: "success"
@@ -273,6 +259,43 @@ export default {
                 })
                 .catch(() => {
                     console.log("cancelled")
+                })
+        },
+        newFolder: function(folderName) {
+            this.showInputFolder = false
+            this.noteLoading = true
+            axios
+                .post("/api/folder/new", {
+                    category: folderName
+                })
+                .then(response => {
+                    if (response.data.status == "SUCCESS") {
+                        this.currentNote = response.data.note
+                        this.refreshList()
+                        this.noteLoading = false
+                    } else {
+                        this.noteLoading = false
+                        this.$message({
+                            message: response.data.msg,
+                            type: "error"
+                        })
+                    }
+                })
+        },
+        refreshList: function() {
+            axios
+                .get("/api/notes")
+                .then(response => {
+                    let tempList = response.data.notes_list
+                    tempList.forEach(e => {
+                        e.notes.forEach(n => {
+                            n["isNote"] = true
+                        })
+                    })
+                    this.notesList = tempList
+                })
+                .catch(function(error) {
+                    console.log(error)
                 })
         }
     },

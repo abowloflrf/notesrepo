@@ -2,11 +2,57 @@
     <el-container>
         <el-aside class="noterepo-left" :width="asideWidth" v-bind:style="{ width: asideWidth }">
             <div class="notesrepo-side-container">
-                <!-- <UserInfo v-if="user" :user="user"></UserInfo> -->
-                <!-- <el-button type="primary" @click="newNote" plain>新笔记</el-button>
-                <el-button type="primary" plain>新目录</el-button> -->
+                <div style="display: flex; align-items: center; justify-content: space-between; flex: 0 0 auto; height: 40px; margin-top: 0px;margin-bottom:20px; padding-left: 12px; padding-right: 12px; box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 1px; background: white; width: 100%; z-index: 1;">
+                    <div style="display: block; align-items: center; min-width: 0px; height: auto;">
+                        <div class="notion-button notion-cursor-pointer" style="align-items: center; user-select: none; width: 100%; display: flex; height: 100%;">
+                            <div style="display: flex; align-items: center; min-height: 26px; font-size: 14px; padding: 0px; overflow: hidden; width: 100%;">
+                                <div style="flex: 1 1 auto; white-space: nowrap; overflow: hidden; min-width: 1px; margin-bottom: 1px; text-overflow: ellipsis;">
+                                    <div style="display: flex; align-items: center;">
+                                        <div style="margin-right: 6px; color: rgb(68, 68, 68); font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                            Workspace
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <el-tree :data="notesList" :props="notesListProps" accordion @node-click="handleNodeClick"></el-tree>
-                <!-- <div class="notesrepo-new">New Note</div> -->
+
+                <div class="notesrepo-new new-note">
+                    <div class="notion-button notion-cursor-pointer" style="align-items: center; user-select: none; width: 100%; display: flex;">
+                        <div style="display: flex; align-items: center; min-height: 26px; font-size: 16px; padding: 8px 10px; color: rgb(136, 136, 136);">
+                            <div style="display: flex; align-items: center; justify-content: center; flex-shrink: 0; flex-grow: 0; margin-right: 4px; color: rgb(186, 185, 184); width: 28px; height: 24px;">
+                                <div style="width: 20px; display: flex; align-items: center; justify-content: center;">
+                                    <svg width="100%" height="100%" viewBox="0 0 18 18" style="fill: currentcolor; display: block; width: 13px; height: 13px;">
+                                        <polygon points="17,8 10,8 10,1 8,1 8,8 1,8 1,10 8,10 8,17 10,17 10,10 17,10 "></polygon>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div style="flex: 1 1 auto; white-space: nowrap; overflow: hidden; min-width: 1px; margin-bottom: 1px; text-overflow: ellipsis;">
+                                新建笔记
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="notesrepo-new new-folder">
+                    <div class="notion-button notion-cursor-pointer" style="align-items: center; user-select: none; width: 100%; display: flex;">
+                        <div style="display: flex; align-items: center; min-height: 26px; font-size: 16px; padding: 8px 10px; color: rgb(136, 136, 136);">
+                            <div style="display: flex; align-items: center; justify-content: center; flex-shrink: 0; flex-grow: 0; margin-right: 4px; color: rgb(186, 185, 184); width: 28px; height: 24px;">
+                                <div style="width: 20px; display: flex; align-items: center; justify-content: center;">
+                                    <svg width="100%" height="100%" viewBox="0 0 18 18" style="fill: currentcolor; display: block; width: 13px; height: 13px;">
+                                        <polygon points="17,8 10,8 10,1 8,1 8,8 1,8 1,10 8,10 8,17 10,17 10,10 17,10 "></polygon>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div style="flex: 1 1 auto; white-space: nowrap; overflow: hidden; min-width: 1px; margin-bottom: 1px; text-overflow: ellipsis;">
+                                新建文件夹
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </el-aside>
         <el-container class="notesrepo-right">
@@ -61,7 +107,7 @@ export default {
             noteLoading: false,
             headerHeight: "40px",
             asideWidth: "230px",
-            showTodo:false
+            showTodo: false
         }
     },
     methods: {
@@ -118,16 +164,24 @@ export default {
 </script>
 
 <style>
+.el-tree{
+    margin-bottom:20px;
+}
 .notesrepo-left {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    display: flex;
+    flex-direction: column;
+    width: 0px;
+    overflow: visible;
+}
+.notesrepo-side-container {
     width: 230px;
     flex-grow: 0;
     flex-shrink: 0;
-    pointer-events: none;
     position: relative;
-    z-index: 99;
-}
-.notesrepo-side-container {
-    padding: 10px;
 }
 .notesrepo-right {
     height: 100vh;
@@ -161,6 +215,7 @@ export default {
 }
 .notesrepo-new {
     display: block;
+    color: rgb(160, 159, 158);
     flex: 0 0 auto;
     margin-top: auto;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 1px inset;
@@ -180,21 +235,21 @@ export default {
     z-index: 999;
     cursor: pointer;
 }
-#todo-btn:hover{
+#todo-btn:hover {
     box-shadow: 0 0 16px rgba(0, 0, 0, 0.4);
     transition: 0.2s;
 }
-#todo-btn i{
+#todo-btn i {
     color: #606266;
     font-size: 30px;
     line-height: 50px;
     position: relative;
     left: 9px;
 }
-.notesrepo-todo-dialog{
+.notesrepo-todo-dialog {
     padding: 0 20px;
 }
-.notesrepo-todo-dialog .el-dialog{
+.notesrepo-todo-dialog .el-dialog {
     max-width: 500px;
     width: auto;
 }

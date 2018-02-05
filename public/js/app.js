@@ -71471,7 +71471,7 @@ exports = module.exports = __webpack_require__(6)(false);
 
 
 // module
-exports.push([module.i, "\n.notesrepo-left {\r\n    width: 230px;\r\n    flex-grow: 0;\r\n    flex-shrink: 0;\r\n    pointer-events: none;\r\n    position: relative;\r\n    z-index: 99;\n}\n.notesrepo-side-container {\r\n    padding: 10px;\n}\n.notesrepo-right {\r\n    height: 100vh;\r\n    box-shadow: rgba(84, 70, 35, 0.3) 0px 6px 20px;\r\n    flex-grow: 1;\r\n    flex-shrink: 1;\r\n    display: flex;\r\n    flex-direction: column;\r\n    z-index: 1;\r\n    width: calc(100vw - 230px);\r\n    max-height: 100%;\n}\n.notesrepo-header {\r\n    z-index: 100;\r\n    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);\r\n    padding: 0;\n}\n.notesrepo-toggler {\r\n    padding: 11px;\r\n    cursor: pointer;\r\n    display: inline-block;\n}\n.notesrepo-toggler svg {\r\n    height: 18px;\r\n    width: 18px;\n}\n.notesrepo-note {\r\n    word-wrap: break-word;\r\n    max-width: 100%;\r\n    overflow-y: auto;\n}\n.notesrepo-new {\r\n    display: block;\r\n    flex: 0 0 auto;\r\n    margin-top: auto;\r\n    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px inset;\n}\n.el-main {\r\n    background-color: #e9eef3;\n}\n#todo-btn {\r\n    position: absolute;\r\n    bottom: 30px;\r\n    right: 30px;\r\n    width: 50px;\r\n    height: 50px;\r\n    background: #eeeeee;\r\n    border-radius: 50%;\r\n    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);\r\n    z-index: 999;\r\n    cursor: pointer;\n}\n#todo-btn:hover{\r\n    box-shadow: 0 0 16px rgba(0, 0, 0, 0.4);\r\n    transition: 0.2s;\n}\n#todo-btn i{\r\n    color: #606266;\r\n    font-size: 30px;\r\n    line-height: 50px;\r\n    position: relative;\r\n    left: 9px;\n}\n.notesrepo-todo-dialog{\r\n    padding: 0 20px;\n}\n.notesrepo-todo-dialog .el-dialog{\r\n    max-width: 500px;\r\n    width: auto;\n}\r\n", ""]);
+exports.push([module.i, "\n.el-tree{\r\n    margin-bottom:20px;\n}\n.notesrepo-left {\r\n    position: absolute;\r\n    top: 0px;\r\n    left: 0px;\r\n    bottom: 0px;\r\n    display: flex;\r\n    flex-direction: column;\r\n    width: 0px;\r\n    overflow: visible;\n}\n.notesrepo-side-container {\r\n    width: 230px;\r\n    flex-grow: 0;\r\n    flex-shrink: 0;\r\n    position: relative;\n}\n.notesrepo-right {\r\n    height: 100vh;\r\n    box-shadow: rgba(84, 70, 35, 0.3) 0px 6px 20px;\r\n    flex-grow: 1;\r\n    flex-shrink: 1;\r\n    display: flex;\r\n    flex-direction: column;\r\n    z-index: 1;\r\n    width: calc(100vw - 230px);\r\n    max-height: 100%;\n}\n.notesrepo-header {\r\n    z-index: 100;\r\n    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);\r\n    padding: 0;\n}\n.notesrepo-toggler {\r\n    padding: 11px;\r\n    cursor: pointer;\r\n    display: inline-block;\n}\n.notesrepo-toggler svg {\r\n    height: 18px;\r\n    width: 18px;\n}\n.notesrepo-note {\r\n    word-wrap: break-word;\r\n    max-width: 100%;\r\n    overflow-y: auto;\n}\n.notesrepo-new {\r\n    display: block;\r\n    color: rgb(160, 159, 158);\r\n    flex: 0 0 auto;\r\n    margin-top: auto;\r\n    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px inset;\n}\n.el-main {\r\n    background-color: #e9eef3;\n}\n#todo-btn {\r\n    position: absolute;\r\n    bottom: 30px;\r\n    right: 30px;\r\n    width: 50px;\r\n    height: 50px;\r\n    background: #eeeeee;\r\n    border-radius: 50%;\r\n    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);\r\n    z-index: 999;\r\n    cursor: pointer;\n}\n#todo-btn:hover {\r\n    box-shadow: 0 0 16px rgba(0, 0, 0, 0.4);\r\n    transition: 0.2s;\n}\n#todo-btn i {\r\n    color: #606266;\r\n    font-size: 30px;\r\n    line-height: 50px;\r\n    position: relative;\r\n    left: 9px;\n}\n.notesrepo-todo-dialog {\r\n    padding: 0 20px;\n}\n.notesrepo-todo-dialog .el-dialog {\r\n    max-width: 500px;\r\n    width: auto;\n}\r\n", ""]);
 
 // exports
 
@@ -71523,6 +71523,52 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_UserInfo___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_UserInfo__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Todo__ = __webpack_require__(236);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Todo___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_Todo__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -95821,6 +95867,117 @@ var render = function() {
             "div",
             { staticClass: "notesrepo-side-container" },
             [
+              _c(
+                "div",
+                {
+                  staticStyle: {
+                    display: "flex",
+                    "align-items": "center",
+                    "justify-content": "space-between",
+                    flex: "0 0 auto",
+                    height: "40px",
+                    "margin-top": "0px",
+                    "margin-bottom": "20px",
+                    "padding-left": "12px",
+                    "padding-right": "12px",
+                    "box-shadow": "rgba(0, 0, 0, 0.1) 0px 1px 1px",
+                    background: "white",
+                    width: "100%",
+                    "z-index": "1"
+                  }
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticStyle: {
+                        display: "block",
+                        "align-items": "center",
+                        "min-width": "0px",
+                        height: "auto"
+                      }
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "notion-button notion-cursor-pointer",
+                          staticStyle: {
+                            "align-items": "center",
+                            "user-select": "none",
+                            width: "100%",
+                            display: "flex",
+                            height: "100%"
+                          }
+                        },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticStyle: {
+                                display: "flex",
+                                "align-items": "center",
+                                "min-height": "26px",
+                                "font-size": "14px",
+                                padding: "0px",
+                                overflow: "hidden",
+                                width: "100%"
+                              }
+                            },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticStyle: {
+                                    flex: "1 1 auto",
+                                    "white-space": "nowrap",
+                                    overflow: "hidden",
+                                    "min-width": "1px",
+                                    "margin-bottom": "1px",
+                                    "text-overflow": "ellipsis"
+                                  }
+                                },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticStyle: {
+                                        display: "flex",
+                                        "align-items": "center"
+                                      }
+                                    },
+                                    [
+                                      _c(
+                                        "div",
+                                        {
+                                          staticStyle: {
+                                            "margin-right": "6px",
+                                            color: "rgb(68, 68, 68)",
+                                            "font-weight": "500",
+                                            "white-space": "nowrap",
+                                            overflow: "hidden",
+                                            "text-overflow": "ellipsis"
+                                          }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                        Workspace\n                                    "
+                                          )
+                                        ]
+                                      )
+                                    ]
+                                  )
+                                ]
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
               _c("el-tree", {
                 attrs: {
                   data: _vm.notesList,
@@ -95828,7 +95985,219 @@ var render = function() {
                   accordion: ""
                 },
                 on: { "node-click": _vm.handleNodeClick }
-              })
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "notesrepo-new new-note" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "notion-button notion-cursor-pointer",
+                    staticStyle: {
+                      "align-items": "center",
+                      "user-select": "none",
+                      width: "100%",
+                      display: "flex"
+                    }
+                  },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticStyle: {
+                          display: "flex",
+                          "align-items": "center",
+                          "min-height": "26px",
+                          "font-size": "16px",
+                          padding: "8px 10px",
+                          color: "rgb(136, 136, 136)"
+                        }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticStyle: {
+                              display: "flex",
+                              "align-items": "center",
+                              "justify-content": "center",
+                              "flex-shrink": "0",
+                              "flex-grow": "0",
+                              "margin-right": "4px",
+                              color: "rgb(186, 185, 184)",
+                              width: "28px",
+                              height: "24px"
+                            }
+                          },
+                          [
+                            _c(
+                              "div",
+                              {
+                                staticStyle: {
+                                  width: "20px",
+                                  display: "flex",
+                                  "align-items": "center",
+                                  "justify-content": "center"
+                                }
+                              },
+                              [
+                                _c(
+                                  "svg",
+                                  {
+                                    staticStyle: {
+                                      fill: "currentcolor",
+                                      display: "block",
+                                      width: "13px",
+                                      height: "13px"
+                                    },
+                                    attrs: {
+                                      width: "100%",
+                                      height: "100%",
+                                      viewBox: "0 0 18 18"
+                                    }
+                                  },
+                                  [
+                                    _c("polygon", {
+                                      attrs: {
+                                        points:
+                                          "17,8 10,8 10,1 8,1 8,8 1,8 1,10 8,10 8,17 10,17 10,10 17,10 "
+                                      }
+                                    })
+                                  ]
+                                )
+                              ]
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticStyle: {
+                              flex: "1 1 auto",
+                              "white-space": "nowrap",
+                              overflow: "hidden",
+                              "min-width": "1px",
+                              "margin-bottom": "1px",
+                              "text-overflow": "ellipsis"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                            新建笔记\n                        "
+                            )
+                          ]
+                        )
+                      ]
+                    )
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "notesrepo-new new-folder" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "notion-button notion-cursor-pointer",
+                    staticStyle: {
+                      "align-items": "center",
+                      "user-select": "none",
+                      width: "100%",
+                      display: "flex"
+                    }
+                  },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticStyle: {
+                          display: "flex",
+                          "align-items": "center",
+                          "min-height": "26px",
+                          "font-size": "16px",
+                          padding: "8px 10px",
+                          color: "rgb(136, 136, 136)"
+                        }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticStyle: {
+                              display: "flex",
+                              "align-items": "center",
+                              "justify-content": "center",
+                              "flex-shrink": "0",
+                              "flex-grow": "0",
+                              "margin-right": "4px",
+                              color: "rgb(186, 185, 184)",
+                              width: "28px",
+                              height: "24px"
+                            }
+                          },
+                          [
+                            _c(
+                              "div",
+                              {
+                                staticStyle: {
+                                  width: "20px",
+                                  display: "flex",
+                                  "align-items": "center",
+                                  "justify-content": "center"
+                                }
+                              },
+                              [
+                                _c(
+                                  "svg",
+                                  {
+                                    staticStyle: {
+                                      fill: "currentcolor",
+                                      display: "block",
+                                      width: "13px",
+                                      height: "13px"
+                                    },
+                                    attrs: {
+                                      width: "100%",
+                                      height: "100%",
+                                      viewBox: "0 0 18 18"
+                                    }
+                                  },
+                                  [
+                                    _c("polygon", {
+                                      attrs: {
+                                        points:
+                                          "17,8 10,8 10,1 8,1 8,8 1,8 1,10 8,10 8,17 10,17 10,10 17,10 "
+                                      }
+                                    })
+                                  ]
+                                )
+                              ]
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticStyle: {
+                              flex: "1 1 auto",
+                              "white-space": "nowrap",
+                              overflow: "hidden",
+                              "min-width": "1px",
+                              "margin-bottom": "1px",
+                              "text-overflow": "ellipsis"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                            新建文件夹\n                        "
+                            )
+                          ]
+                        )
+                      ]
+                    )
+                  ]
+                )
+              ])
             ],
             1
           )

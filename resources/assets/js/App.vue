@@ -311,7 +311,7 @@ export default {
         },
         changeShareStatus:function(isPublic){
             axios
-                .patch("/api/notes/" + this.currentNote.uuid, {
+                .post("/api/notes/" + this.currentNote.uuid, {
                     is_public: this.currentNote.is_public
                 })
         },

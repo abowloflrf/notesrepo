@@ -28,7 +28,7 @@ Route::group(['middleware' => 'api', 'prefix' => 'notes'], function ($router) {
     Route::get('{uuid}', 'NotesController@getSingleNote');
     Route::post('{uuid}', 'NotesController@updateSingleNote');
     Route::delete('{uuid}', 'NotesController@deleteSingleNote');
-    Route::patch('{uuid}','NotesController@changePublicStatus');
+    Route::post('{uuid}','NotesController@changePublicStatus');
 });
 Route::group(['middleware' => 'api', 'prefix' => 'folder'], function ($router) {
     Route::post('new', 'FolderController@createFolder');

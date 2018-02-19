@@ -2,6 +2,7 @@
     <el-container>
         <el-aside class="notesrepo-left" v-bind:class={showSidebar:isSidebarActive}>
             <div class="notesrepo-side-container">
+
                 <div style="display: flex; align-items: center; justify-content: space-between; flex: 0 0 auto; height: 40px; margin-top: 0px;margin-bottom:20px; box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 1px; background: white; width: 100%; z-index: 1;">
                     <div style="display: block; align-items: center; min-width: 0px; height: auto;">
                         <div class="notion-button notion-cursor-pointer" style="align-items: center; user-select: none; width: 100%; display: flex; height: 100%;">
@@ -88,12 +89,37 @@
         </el-aside>
         <el-container class="notesrepo-right" v-bind:class={showSidebar:isSidebarActive}>
             <el-header class="notesrepo-header" :height="headerHeight">
-                <div class="notesrepo-toggler" @click="showSidebar">   
+                <div class="notesrepo-toggler" @click="showSidebar">
                     <svg width="18px" height="18px" viewBox="0 0 14 14" style="fill: currentcolor; display: block; width: 18px; height: 18px;"><path d="M0,1.25 L14,1.25 L14,2.75 L0,2.75 L0,1.25 Z M0,6.25 L14,6.25 L14,7.75 L0,7.75 L0,6.25 Z M0,11.25 L14,11.25 L14,12.75 L0,12.75 L0,11.25 Z"></path></svg>
                 </div>
                 <div v-if="currentNote" style="display:inline">
                     <el-button class="notesrepo-top-btn" size="mini" type="primary" :loading="saveLoading" @click="saveNote">保存</el-button>
                     <el-button class="notesrepo-top-btn" size="mini" type="danger" :loading="deleteLoading" @click="deleteNote">删除</el-button>
+                    <el-popover
+                        ref="sharePopover"
+                        placement="bottom"
+                        width="260"
+                        v-model="showSharePopover">
+                        <div style="padding:5px 10px">
+                            <span>分享为一篇可公开访问的文章</span>
+                            <el-switch
+                                v-model="currentNote.is_public"
+                                @change="changeShareStatus"
+                                active-color="#4aa9e2"
+                                inactive-color="#c4c4c4"
+                                style="float:right">
+                            </el-switch>
+                            <div style="margin-top:15px" v-if="currentNote.is_public">
+                                <el-input
+                                size="small"
+                                v-model="publicUrl"
+                                id="url-input">
+                                </el-input>
+                                <el-button type="text" @click="copyURL">复制链接</el-button>
+                            </div>
+                        </div>    
+                    </el-popover>
+                    <el-button class="notesrepo-top-btn" size="mini" type="text" v-popover:sharePopover style="margin-left:10px">分享</el-button>
                 </div>
             </el-header>
             <el-main v-loading="noteLoading">
@@ -152,7 +178,8 @@ export default {
             isSidebarActive: false,
             showChooseCategory: false,
             showInputFolder: false,
-            choosenCategory: "未指定目录",
+            showSharePopover: false,
+            choosenCategory: "未指定目录",// TODO: 这里改成第一个文件夹
             newFolderName: "未命名目录",
             headerHeight: "40px",
             showTodo: false
@@ -282,6 +309,25 @@ export default {
                     }
                 })
         },
+        changeShareStatus:function(isPublic){
+            axios
+                .patch("/api/notes/" + this.currentNote.uuid, {
+                    is_public: this.currentNote.is_public
+                })
+        },
+        copyURL:function(){
+            var urlInput=document.getElementById("url-input")
+            urlInput.select()
+            try{
+                var success=document.execCommand("copy")
+                var msg=success?"已复制！":"浏览器不支持赋值，请手动复制链接"
+                this.$message({
+                message: msg
+                })
+            }catch(err){
+                alert("浏览器不支持赋值，请手动复制链接")
+            }
+        },
         refreshList: function() {
             axios
                 .get("/api/notes")
@@ -306,6 +352,9 @@ export default {
                 options.push(e.title)
             })
             return options
+        },
+        publicUrl:function(){
+            return 'http://notesrepo.com/p/'+this.currentNote.uuid
         }
     },
     beforeCreate() {
@@ -342,8 +391,8 @@ export default {
 body {
     font-family: "PingFang SC", "Source Han Sans CN", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
 }
-.CodeMirror-code{
-    font-family: 'Fira Code', monospace;
+.CodeMirror-code {
+    font-family: "Fira Code", monospace;
 }
 .el-tree {
     margin-bottom: 20px;
@@ -354,8 +403,8 @@ body {
 .el-container {
     overflow: hidden;
 }
-.el-message{
-    min-width: 200px!important;
+.el-message {
+    min-width: 200px !important;
 }
 .notesrepo-left {
     position: absolute;

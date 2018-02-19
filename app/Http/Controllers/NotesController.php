@@ -9,7 +9,8 @@ use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
 
 class NotesController extends Controller
 {
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('auth:api');
     }
     //获取当前用户的笔记列表，以文件夹分类方式返回json
@@ -70,6 +71,7 @@ class NotesController extends Controller
             'author' => $note['author'],
             'created_at' => $note['created_at'],
             'category' => $note['category'],
+            'is_public' => (boolean)$note['is_public'],
             'content' => $note['content']
         ));
     }
@@ -77,27 +79,27 @@ class NotesController extends Controller
     public function createNote(Request $request)
     {
         //为新建的文章生成一个uuid
-        try{
+        try {
             $uuid = Uuid::uuid1()->toString();
-        }catch(UnsatisfiedDependencyException $e){
+        } catch (UnsatisfiedDependencyException $e) {
             return response()->json(array(
                 'status' => 'ERROR',
                 'msg' => 'UUID exception: ' . $e->getMessage()
             ));
         }
-        $note=new Note;
-        $note->uuid=$uuid;
-        $note->author=auth()->user()->email;
-        $note->title=$request->title;
-        $note->content=$request->content;
-        $note->category=$request->category;
-        if($note->save()){
+        $note = new Note;
+        $note->uuid = $uuid;
+        $note->author = auth()->user()->email;
+        $note->title = $request->title;
+        $note->content = $request->content;
+        $note->category = $request->category;
+        if ($note->save()) {
             return response()->json(array(
                 'status' => 'SUCCESS',
-                'uuid'=>$note->uuid,
+                'uuid' => $note->uuid,
                 'msg' => 'Successfully create a note.'
             ));
-        }else{
+        } else {
             return response()->json(array(
                 'status' => 'ERROR',
                 'msg' => 'Failed to create a note'
@@ -111,6 +113,24 @@ class NotesController extends Controller
         $note = Note::where('uuid', $uuid)->first();
         $note->title = $request->title;
         $note->content = $request->content;
+        if ($note->save()) {
+            return response()->json(array(
+                'status' => 'SUCCESS',
+                'msg' => 'Successfully update a note.'
+            ));
+        } else {
+            return response()->json(array(
+                'status' => 'ERROR',
+                'msg' => 'Failed to update.'
+            ));
+        }
+    }
+    
+    //修改一条笔记的发布状态
+    public function changePublicStatus(Request $request, $uuid)
+    {
+        $note = Note::where('uuid', $uuid)->first();
+        $note->is_public = $request->is_public;
         if ($note->save()) {
             return response()->json(array(
                 'status' => 'SUCCESS',

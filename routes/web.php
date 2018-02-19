@@ -15,3 +15,5 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/workspace','WorkspaceController@index')->name('workspace');
+
+Route::get('/p/{uuid}','PublicController@index');

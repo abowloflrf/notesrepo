@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements JWTSubject
 {
-    use Notifiable, Notifiable;
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.

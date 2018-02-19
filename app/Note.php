@@ -10,8 +10,8 @@ class Note extends Model
         'author', 'title', 'content','category'
     ];
 
-    public function user()
+    public function author()
     {
-        return $this->belongsTo('App\User','email','author');
+        return $this->belongsTo('App\User','author','email');
     }
 }

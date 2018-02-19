@@ -310,7 +310,7 @@ export default {
                 })
         },
         changeShareStatus: function(isPublic) {
-            axios.post("/api/notes/publish" + this.currentNote.uuid, {
+            axios.post("/api/notes/publish/" + this.currentNote.uuid, {
                 is_public: this.currentNote.is_public
             })
         },

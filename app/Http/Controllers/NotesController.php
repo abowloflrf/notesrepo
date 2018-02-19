@@ -93,6 +93,7 @@ class NotesController extends Controller
         $note->title = $request->title;
         $note->content = $request->content;
         $note->category = $request->category;
+        //$note->is_public=false;
         if ($note->save()) {
             return response()->json(array(
                 'status' => 'SUCCESS',

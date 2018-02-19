@@ -179,7 +179,7 @@ export default {
             showChooseCategory: false,
             showInputFolder: false,
             showSharePopover: false,
-            choosenCategory: "未指定目录",// TODO: 这里改成第一个文件夹
+            choosenCategory: "未指定目录", // TODO: 这里改成第一个文件夹
             newFolderName: "未命名目录",
             headerHeight: "40px",
             showTodo: false
@@ -309,22 +309,21 @@ export default {
                     }
                 })
         },
-        changeShareStatus:function(isPublic){
-            axios
-                .post("/api/notes/" + this.currentNote.uuid, {
-                    is_public: this.currentNote.is_public
-                })
+        changeShareStatus: function(isPublic) {
+            axios.post("/api/notes/publish" + this.currentNote.uuid, {
+                is_public: this.currentNote.is_public
+            })
         },
-        copyURL:function(){
-            var urlInput=document.getElementById("url-input")
+        copyURL: function() {
+            var urlInput = document.getElementById("url-input")
             urlInput.select()
-            try{
-                var success=document.execCommand("copy")
-                var msg=success?"已复制！":"浏览器不支持赋值，请手动复制链接"
+            try {
+                var success = document.execCommand("copy")
+                var msg = success ? "已复制！" : "浏览器不支持赋值，请手动复制链接"
                 this.$message({
-                message: msg
+                    message: msg
                 })
-            }catch(err){
+            } catch (err) {
                 alert("浏览器不支持赋值，请手动复制链接")
             }
         },
@@ -353,8 +352,8 @@ export default {
             })
             return options
         },
-        publicUrl:function(){
-            return 'http://notesrepo.com/p/'+this.currentNote.uuid
+        publicUrl: function() {
+            return "http://notesrepo.com/p/" + this.currentNote.uuid
         }
     },
     beforeCreate() {
@@ -378,6 +377,10 @@ export default {
                     })
                 })
                 this.notesList = tempList
+                //获取第一个目录
+                if (this.notesList.length > 0) {
+                    this.choosenCategory = this.notesList[0].title
+                }
             })
             .catch(function(error) {
                 console.log(error)

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Note extends Model
 {
     protected $fillable = [
-        'author', 'title', 'content','category'
+        'author', 'title', 'content','category','is_public'
     ];
 
     public function author()

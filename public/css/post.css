@@ -119,6 +119,8 @@ table tbody + tbody {
 }
 
 .post-content pre > code {
+    display: block;
+    overflow-x: auto;
     border: none;
     background: rgba(238, 238, 238, 0.35);
     padding: 8px 10px;

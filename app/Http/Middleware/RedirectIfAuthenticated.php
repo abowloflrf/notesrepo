@@ -20,21 +20,7 @@ class RedirectIfAuthenticated
         if (Auth::guard($guard)->check()) {
             return redirect('/workspace');
         }
-        // switch($guard){
-        //     case 'web':
-        //         if(Auth::guard($guard)->check()){
-        //             return redirect('/home');
-        //         }
-        //         break;
-        //     default :
-        //         if(!Auth::guard($guard)->check()){
-        //             return json_encode(array([
-        //                 'status'=>'error',
-        //                 'message'=>'Authentication failed!'
-        //             ]));
-        //         }
-        //         break;
-        // }
+
         return $next($request);
     }
 }
